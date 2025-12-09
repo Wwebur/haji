@@ -1,65 +1,76 @@
-import Image from "next/image";
+"use client";
 
-export default function Home() {
+import Link from "next/link";
+import { Region } from "@/types";
+import areasData from "@/mockup/areas.json";
+
+// Region display information
+const regionInfo = {
+  kantou: { name: "関東", nameEn: "KANTOU" },
+  kansai: { name: "関西", nameEn: "KANSAI" },
+  tokai: { name: "東海", nameEn: "TOKAI" },
+  hokkaidotohoku: { name: "北海道・東北", nameEn: "HOKKAIDO・TOHOKU" },
+  koshinetuhokuriku: { name: "甲信越・北陸", nameEn: "KOSHINETSU・HOKURIKU" },
+  chugokushikoku: { name: "中国・四国", nameEn: "CHUGOKU・SHIKOKU" },
+  kyusyuokinawa: { name: "九州・沖縄", nameEn: "KYUSHU・OKINAWA" },
+};
+
+export default function HomePage() {
+  const regions = areasData as Region[];
+
   return (
-    <div className="flex min-h-screen items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex min-h-screen w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
+    <div className="landing-page">
+      {/* Header */}
+      <header className="landing-header">
+        <div className="landing-header-content">
+          <h1 className="landing-title">はじめてのメンズエステアルバイト</h1>
+          <p className="landing-subtitle">
+            【はじめてのメンズエステアルバイト】ならエステ求人情報が満載です。
           </p>
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
+      </header>
+
+      {/* Main Content */}
+      <main className="landing-main">
+        <div className="region-section">
+          <h2 className="region-section-title">
+            <span className="search-icon">🔍</span>
+            エリアからエステ求人を探す
+          </h2>
+
+          <div className="region-grid">
+            {regions.map((region) => {
+              const info = regionInfo[region.region as keyof typeof regionInfo];
+
+              return (
+                <Link
+                  key={region.region}
+                  href={`/${region.region}`}
+                  className="region-card"
+                >
+                  <div className="region-card-content">
+                    <h3 className="region-card-title">{info.name}</h3>
+                    <p className="region-card-title-en">{info.nameEn}</p>
+                  </div>
+                </Link>
+              );
+            })}
+          </div>
         </div>
       </main>
+
+      {/* Footer */}
+      <footer className="footer">
+        <div className="footer-nav">
+          <span>会社概要</span>
+          <span>利用規約</span>
+          <span>掲載申し込み</span>
+          <span>お問い合わせ</span>
+        </div>
+        <p className="copyright">
+          Copyright 2025 はじめてのメンズエステアルバイト All rights reserved.
+        </p>
+      </footer>
     </div>
   );
 }
