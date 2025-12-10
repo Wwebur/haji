@@ -97,7 +97,7 @@ export default function RegionPage() {
         params.delete("industry");
       }
     }
-    
+
     if (updates.keyword !== undefined) {
       if (updates.keyword) {
         params.set("keyword", updates.keyword);
@@ -114,9 +114,8 @@ export default function RegionPage() {
       }
     }
 
-    const newUrl = `/${currentRegion}${
-      params.toString() ? `?${params.toString()}` : ""
-    }`;
+    const newUrl = `/${currentRegion}${params.toString() ? `?${params.toString()}` : ""
+      }`;
     router.push(newUrl, { scroll: false });
   };
 
@@ -189,8 +188,8 @@ export default function RegionPage() {
   const handleFilterChange = (areaSlug: string, industryId: string) => {
     // Apply both filters together
     updateURLParams({
-      area: areaSlug || undefined,
-      industry: industryId || undefined,
+      industry: industryId,
+      area: areaSlug,
       page: 1,
     });
   };
@@ -200,24 +199,28 @@ export default function RegionPage() {
   };
 
   const handleAreaClick = (prefectureName: string, cityNames: string[]) => {
-    // Find the area slug from city names
+    if (!cityNames || cityNames.length === 0) return; // safety check
+
     let areaSlug = "";
+
     if (currentRegionData) {
       for (const pref of currentRegionData.prefectures) {
-        // Check if it's a prefecture-wide selection
         const prefCityNames = pref.cities
           .filter((c) => !c.disabled)
           .map((c) => c.name);
+
+        // prefecture-wide selected
         if (
-          JSON.stringify(cityNames.sort()) ===
-          JSON.stringify(prefCityNames.sort())
+          JSON.stringify([...cityNames].sort()) ===
+          JSON.stringify([...prefCityNames].sort())
         ) {
           areaSlug = pref.slug;
           break;
         }
-        // Check if it's a single city
+
+        // single city
         const city = pref.cities.find((c) => c.name === cityNames[0]);
-        if (city && city.slug) {
+        if (city?.slug) {
           areaSlug = city.slug;
           break;
         }
@@ -225,8 +228,8 @@ export default function RegionPage() {
     }
 
     updateURLParams({
-      area: areaSlug || undefined,
-      industry: undefined,
+      area: areaSlug,
+      industry: "",
       page: 1,
     });
   };
@@ -235,8 +238,8 @@ export default function RegionPage() {
     // Find industry ID from name
     const industryType = industryTypes.find((t) => t.name === industryName);
     updateURLParams({
-      area: undefined,
-      industry: industryType?.id || undefined,
+      area: "",
+      industry: industryType?.id || "",
       page: 1,
     });
   };
@@ -307,9 +310,11 @@ export default function RegionPage() {
           currentRegion={currentRegion}
           cityCountMap={cityCountMap}
           prefectureCountMap={prefectureCountMap}
-          onSearch={handleSearch}
-          onAreaClick={handleAreaClick}
-          onIndustryClick={handleIndustryClick}
+          onSearch={(keyword) => updateURLParams({ keyword, page: 1 })}
+          onAreaClick={(prefectureName, cityNames) =>
+            handleAreaClick(prefectureName, cityNames)
+          }
+          onIndustryClick={(industry) => handleIndustryClick(industry)}
         />
 
         <div className="content-area">
