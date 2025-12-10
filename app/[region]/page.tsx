@@ -284,7 +284,6 @@ export default function RegionPage() {
 
           <div className="header-info">
             <div className="update-info">
-              <span className="date">2025年12月05日更新</span>
               <span>メンズエステ求人情報</span>
               <span className="count">{filteredShops.length}</span>
               <span>件掲載</span>
