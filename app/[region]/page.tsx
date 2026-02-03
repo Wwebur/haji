@@ -3,6 +3,7 @@
 import { useMemo } from "react";
 import { useParams, useSearchParams, useRouter } from "next/navigation";
 import Link from "next/link";
+import Image from "next/image";
 import Sidebar from "@/components/Sidebar";
 import FilterBar from "@/components/FilterBar";
 import ShopCard from "@/components/ShopCard";
@@ -194,10 +195,6 @@ export default function RegionPage() {
     });
   };
 
-  const handleSearch = (keyword: string) => {
-    updateURLParams({ keyword, page: 1 });
-  };
-
   const handleAreaClick = (prefectureName: string, cityNames: string[]) => {
     if (!cityNames || cityNames.length === 0) return; // safety check
 
@@ -249,14 +246,28 @@ export default function RegionPage() {
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
+  const currentDate = useMemo(() => {
+    const now = new Date();
+    return `${now.getFullYear()}年${String(now.getMonth() + 1).padStart(2, "0")}月${String(now.getDate()).padStart(2, "0")}日`;
+  }, []);
+
+  const handleHeaderPrefectureClick = (prefectureSlug: string) => {
+    updateURLParams({ area: prefectureSlug, industry: "", page: 1 });
+  };
+
   if (!currentRegionData) {
     return (
       <div className="app-container">
-        <header className="header">
-          <div className="header-content">
-            <Link href="/" className="logo">
-              <h1>はじめてのメンズエステアルバイト</h1>
-            </Link>
+        <header className="landing-header region-page-header">
+          <div className="landing-header-content">
+            <h1 className="landing-title">メンズエステ求人情報サイト｜はじめてのメンズエステアルバイト【はじエス】</h1>
+            <div className="header-box">
+              <div className="logobox">
+                <Link href="/" className="logo">
+                  <Image src="/images/logo_01.png" alt="はじめてのメンズエステアルバイト" width={180} height={106} />
+                </Link>
+              </div>
+            </div>
           </div>
         </header>
         <main className="main-content">
@@ -270,24 +281,52 @@ export default function RegionPage() {
   }
 
   return (
-    <div className="app-container">
-      {/* Header */}
-      <header className="header">
-        <div className="header-content">
-          <Link href="/" className="logo">
-            <h1>はじめてのメンズエステアルバイト</h1>
-            <div className="region-badge">
-              <span className="region-name">{regionDisplayInfo.name}</span>
-              <span className="region-name-en">{regionDisplayInfo.nameEn}</span>
+    <div className="app-container region-page">
+      {/* Header - same style as landing page (white bg, pink border, light pink accents) */}
+      <header className="landing-header region-page-header">
+        <div className="landing-header-content">
+          <h1 className="landing-title">
+            {new Date().getFullYear()}年最新、{regionDisplayInfo.name}のメンズエステセラピスト求人情報サイト | はじめてのメンズエステアルバイト 【はじエス】
+          </h1>
+          <div className="header-box">
+            <div className="logobox">
+              <Link href="/" className="logo">
+                <Image src="/images/logo_01.png" alt="はじめてのメンズエステアルバイト" width={180} height={106} />
+              </Link>
+              <div className="region-header-info">
+                <div className="region-header-name">
+                  <span className="region-name">{regionDisplayInfo.name}</span>
+                  <span className="region-name-en">{regionDisplayInfo.nameEn}</span>
+                </div>
+                <div className="region-prefectures">
+                  {currentRegionData.prefectures.map((pref, idx) => {
+                    const isSelected =
+                      selectedArea === pref.slug ||
+                      pref.cities.some((c) => c.slug === selectedArea);
+                    return (
+                      <span key={pref.slug}>
+                        {idx > 0 && (
+                          <span className="region-prefecture-sep"> | </span>
+                        )}
+                        <button
+                          type="button"
+                          className={`region-prefecture-link${isSelected ? " is-selected" : ""}`}
+                          onClick={() => handleHeaderPrefectureClick(pref.slug)}
+                        >
+                          {pref.name}
+                        </button>
+                      </span>
+                    );
+                  })}
+                </div>
+              </div>
             </div>
-          </Link>
-
-          <div className="header-info">
-            <div className="update-info">
-              <span>メンズエステ求人情報</span>
-              <span className="count">{filteredShops.length}</span>
-              <span>件掲載</span>
-            </div>
+            <ul className="header-menu">
+              <li className="data">
+                <em>{currentDate}更新</em>
+                メンズエステ求人情報<span>{filteredShops.length}</span>件掲載
+              </li>
+            </ul>
           </div>
         </div>
       </header>
@@ -303,6 +342,15 @@ export default function RegionPage() {
 
       {/* Main Content */}
       <main className="main-content">
+        <div className="main-bg">
+          <p className="bg1"></p>
+          <p className="bg2"></p>
+          <p className="bg3"></p>
+        </div>
+        <div className="sub-bg">
+          <p className="bg-circle-1"></p>
+          <p className="bg-circle-2"></p>
+        </div>
         <Sidebar
           regions={regions}
           industryTypes={industryTypes}
@@ -337,8 +385,8 @@ export default function RegionPage() {
 
           <div className="shop-list">
             {paginatedShops.length > 0 ? (
-              paginatedShops.map((shop) => (
-                <ShopCard key={shop.id} shop={shop} />
+              paginatedShops.map((shop, index) => (
+                <ShopCard key={`${shop.id}-${index}`} shop={shop} />
               ))
             ) : (
               <div className="no-results">
