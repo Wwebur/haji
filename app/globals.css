@@ -135,18 +135,25 @@ body {
 
 /* Main Content */
 .main-content {
+  position: relative;
+}
+
+.content-wrapper {
   max-width: 1400px;
   margin: 0 auto;
   padding: 2rem;
   display: flex;
   gap: 2rem;
   flex: 1;
+  position: relative;
 }
 
 /* Sidebar */
 .sidebar {
   width: 280px;
   flex-shrink: 0;
+  position: relative;
+  z-index: 99;
 }
 
 .search-box {
@@ -220,12 +227,20 @@ body {
   color: #2da3d1;
 }
 
+.filter-list a.is-selected {
+  color: var(--primary-color);
+}
+
 .area-list {
   overflow-y: auto;
 }
 
 .prefecture-section {
   margin-bottom: 1rem;
+}
+
+.prefecture-section.is-selected .prefecture-link {
+  color: var(--primary-color);
 }
 
 .prefecture-link {
@@ -238,6 +253,10 @@ body {
 }
 
 .prefecture-link:hover {
+  color: var(--primary-color);
+}
+
+.prefecture-link.is-selected {
   color: var(--primary-color);
 }
 
@@ -261,6 +280,10 @@ body {
   color: #2da3d1;
 }
 
+.city-list a.is-selected {
+  color: var(--primary-color);
+}
+
 .city-list .disabled {
   color: #ccc;
   cursor: not-allowed;
@@ -272,6 +295,8 @@ body {
   min-width: 0;
   max-width: 100%;
   width: 770px;
+  position: relative;
+  z-index: 99;
 }
 
 .page-title {
@@ -666,7 +691,19 @@ a {
   color: #fb7b96;
 }
 
+.region-page .filter-list a.is-selected {
+  color: #fbb5c4;
+}
+
 .region-page .prefecture-link:hover {
+  color: #fbb5c4;
+}
+
+.region-page .prefecture-link.is-selected {
+  color: #fbb5c4;
+}
+
+.region-page .prefecture-section.is-selected .prefecture-link {
   color: #fbb5c4;
 }
 
@@ -676,6 +713,10 @@ a {
 
 .region-page .city-list a:hover {
   color: #fb7b96;
+}
+
+.region-page .city-list a.is-selected {
+  color: #fbb5c4;
 }
 
 .region-page .page-title {

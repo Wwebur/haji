@@ -351,57 +351,62 @@ export default function RegionPage() {
           <p className="bg-circle-1"></p>
           <p className="bg-circle-2"></p>
         </div>
-        <Sidebar
-          regions={regions}
-          industryTypes={industryTypes}
-          currentRegion={currentRegion}
-          cityCountMap={cityCountMap}
-          prefectureCountMap={prefectureCountMap}
-          onSearch={(keyword) => updateURLParams({ keyword, page: 1 })}
-          onAreaClick={(prefectureName, cityNames) =>
-            handleAreaClick(prefectureName, cityNames)
-          }
-          onIndustryClick={(industry) => handleIndustryClick(industry)}
-        />
 
-        <div className="content-area">
-          <h2 className="page-title">全てのメンズエステ求人</h2>
-
-          <FilterBar
-            prefectures={currentRegionData.prefectures}
+        <div className="content-wrapper">
+          <Sidebar
+            regions={regions}
             industryTypes={industryTypes}
+            currentRegion={currentRegion}
             selectedArea={selectedArea}
             selectedIndustry={selectedIndustry}
-            onFilterChange={handleFilterChange}
+            cityCountMap={cityCountMap}
+            prefectureCountMap={prefectureCountMap}
+            onSearch={(keyword) => updateURLParams({ keyword, page: 1 })}
+            onAreaClick={(prefectureName, cityNames) =>
+              handleAreaClick(prefectureName, cityNames)
+            }
+            onIndustryClick={(industry) => handleIndustryClick(industry)}
           />
 
-          <Pagination
-            currentPage={currentPage}
-            totalPages={totalPages}
-            totalItems={filteredShops.length}
-            itemsPerPage={ITEMS_PER_PAGE}
-            onPageChange={handlePageChange}
-          />
+          <div className="content-area">
+            <h2 className="page-title">全てのメンズエステ求人</h2>
 
-          <div className="shop-list">
-            {paginatedShops.length > 0 ? (
-              paginatedShops.map((shop, index) => (
-                <ShopCard key={`${shop.id}-${index}`} shop={shop} />
-              ))
-            ) : (
-              <div className="no-results">
-                <p>該当する求人が見つかりませんでした。</p>
-              </div>
-            )}
+            <FilterBar
+              prefectures={currentRegionData.prefectures}
+              industryTypes={industryTypes}
+              selectedArea={selectedArea}
+              selectedIndustry={selectedIndustry}
+              onFilterChange={handleFilterChange}
+            />
+
+            <Pagination
+              currentPage={currentPage}
+              totalPages={totalPages}
+              totalItems={filteredShops.length}
+              itemsPerPage={ITEMS_PER_PAGE}
+              onPageChange={handlePageChange}
+            />
+
+            <div className="shop-list">
+              {paginatedShops.length > 0 ? (
+                paginatedShops.map((shop, index) => (
+                  <ShopCard key={`${shop.id}-${index}`} shop={shop} />
+                ))
+              ) : (
+                <div className="no-results">
+                  <p>該当する求人が見つかりませんでした。</p>
+                </div>
+              )}
+            </div>
+
+            <Pagination
+              currentPage={currentPage}
+              totalPages={totalPages}
+              totalItems={filteredShops.length}
+              itemsPerPage={ITEMS_PER_PAGE}
+              onPageChange={handlePageChange}
+            />
           </div>
-
-          <Pagination
-            currentPage={currentPage}
-            totalPages={totalPages}
-            totalItems={filteredShops.length}
-            itemsPerPage={ITEMS_PER_PAGE}
-            onPageChange={handlePageChange}
-          />
         </div>
       </main>
 

@@ -7,6 +7,8 @@ interface SidebarProps {
   regions: Region[];
   industryTypes: IndustryType[];
   currentRegion: string;
+  selectedArea: string;
+  selectedIndustry: string;
   cityCountMap: Map<string, number>;
   prefectureCountMap: Map<string, number>;
   onSearch: (keyword: string) => void;
@@ -18,6 +20,8 @@ export default function Sidebar({
   regions,
   industryTypes,
   currentRegion,
+  selectedArea,
+  selectedIndustry,
   cityCountMap,
   prefectureCountMap,
   onSearch,
@@ -50,6 +54,8 @@ export default function Sidebar({
     onIndustryClick(industryName);
   };
 
+  const normalizedArea = selectedArea.split("/").pop() || selectedArea;
+
   return (
     <aside className="sidebar">
       {/* Search Box */}
@@ -75,6 +81,7 @@ export default function Sidebar({
               <a 
                 href="#"
                 onClick={(e) => handleIndustryClick(e, type.name)}
+                className={selectedIndustry === type.id ? "is-selected" : undefined}
               >
                 {type.name}
               </a>
@@ -89,19 +96,29 @@ export default function Sidebar({
         <div className="area-list">
           {currentRegionData?.prefectures.map((prefecture) => {
             const prefectureCount = prefectureCountMap.get(prefecture.name) || 0;
+            const isPrefectureSelected =
+              normalizedArea === prefecture.slug ||
+              normalizedArea === prefecture.name ||
+              prefecture.cities.some(
+                (city) =>
+                  normalizedArea === city.slug || normalizedArea === city.name
+              );
             
             return (
               <div key={prefecture.slug} className="prefecture-section">
                 <a 
                   href="#"
                   onClick={(e) => handlePrefectureClick(e, prefecture.name, prefecture.cities)}
-                  className="prefecture-link"
+                  className={`prefecture-link${isPrefectureSelected ? " is-selected" : ""}`}
                 >
                   {prefecture.name}({prefectureCount})
                 </a>
                 <ul className="city-list">
                   {prefecture.cities.map((city, idx) => {
                     const cityCount = cityCountMap.get(city.name) || 0;
+                    const isCitySelected =
+                      normalizedArea === city.slug ||
+                      normalizedArea === city.name;
                     
                     return (
                       <li key={idx}>
@@ -109,6 +126,7 @@ export default function Sidebar({
                           <a 
                             href="#"
                             onClick={(e) => handleCityClick(e, city.name)}
+                            className={isCitySelected ? "is-selected" : undefined}
                           >
                             {city.name}({cityCount})
                           </a>
