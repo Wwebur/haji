@@ -1,7 +1,7 @@
 "use client";
 
 import { useMemo } from "react";
-import { useParams, useSearchParams, useRouter } from "next/navigation";
+import { useSearchParams, useRouter } from "next/navigation";
 import Link from "next/link";
 import Image from "next/image";
 import Sidebar from "@/components/Sidebar";
@@ -9,23 +9,18 @@ import FilterBar from "@/components/FilterBar";
 import ShopCard from "@/components/ShopCard";
 import Pagination from "@/components/Pagination";
 import { Region, Shop, IndustryType } from "@/types";
-import {
-  calculateShopCounts,
-  calculatePrefectureCounts,
-} from "@/lib/shopCounts";
+import { calculateShopCounts, calculatePrefectureCounts } from "@/lib/shopCounts";
 import areasData from "@/mockup/areas.json";
 import shopsData from "@/mockup/shops.json";
 
 const ITEMS_PER_PAGE = 10;
 
-// Industry types based on the mockup
 const industryTypes: IndustryType[] = [
   { id: "22", name: "ルーム型", slug: "type_industry02" },
   { id: "23", name: "出張型", slug: "type_industry03" },
   { id: "21", name: "店舗型", slug: "type_industry01" },
 ];
 
-// Region display information
 const regionInfo: Record<string, { name: string; nameEn: string }> = {
   kantou: { name: "関東", nameEn: "KANTOU" },
   kansai: { name: "関西", nameEn: "KANSAI" },
@@ -36,29 +31,26 @@ const regionInfo: Record<string, { name: string; nameEn: string }> = {
   kyusyuokinawa: { name: "九州・沖縄", nameEn: "KYUSHU・OKINAWA" },
 };
 
-export default function RegionPage() {
-  const params = useParams();
+export default function RegionPageClient({ region }: { region: string }) {
   const searchParams = useSearchParams();
   const router = useRouter();
-  const currentRegion = params.region as string;
+  const currentRegion = region;
 
-  // Use URL params as source of truth
+  // URL params as source of truth
   const selectedArea = searchParams.get("area") || "";
   const selectedIndustry = searchParams.get("industry") || "";
   const searchKeyword = searchParams.get("keyword") || "";
-  const currentPage = parseInt(searchParams.get("page") || "1");
+  const currentPage = parseInt(searchParams.get("page") || "1", 10);
 
   const regions = areasData as Region[];
   const allShops = shopsData as unknown as Shop[];
 
-  // Get current region data
   const currentRegionData = regions.find((r) => r.region === currentRegion);
   const regionDisplayInfo = regionInfo[currentRegion] || {
     name: currentRegion,
     nameEn: currentRegion.toUpperCase(),
   };
 
-  // Calculate actual shop counts
   const cityCountMap = useMemo(() => {
     if (!currentRegionData) return new Map<string, number>();
     return calculateShopCounts(allShops, currentRegion, currentRegionData);
@@ -66,14 +58,9 @@ export default function RegionPage() {
 
   const prefectureCountMap = useMemo(() => {
     if (!currentRegionData) return new Map<string, number>();
-    return calculatePrefectureCounts(
-      allShops,
-      currentRegion,
-      currentRegionData
-    );
+    return calculatePrefectureCounts(allShops, currentRegion, currentRegionData);
   }, [allShops, currentRegion, currentRegionData]);
 
-  // Helper function to update URL params
   const updateURLParams = (updates: {
     area?: string;
     industry?: string;
@@ -82,7 +69,6 @@ export default function RegionPage() {
   }) => {
     const params = new URLSearchParams(searchParams.toString());
 
-    // Apply updates
     if (updates.area !== undefined) {
       if (updates.area) {
         params.set("area", updates.area);
@@ -90,7 +76,6 @@ export default function RegionPage() {
         params.delete("area");
       }
     }
-
     if (updates.industry !== undefined) {
       if (updates.industry) {
         params.set("industry", updates.industry);
@@ -98,7 +83,6 @@ export default function RegionPage() {
         params.delete("industry");
       }
     }
-
     if (updates.keyword !== undefined) {
       if (updates.keyword) {
         params.set("keyword", updates.keyword);
@@ -106,25 +90,21 @@ export default function RegionPage() {
         params.delete("keyword");
       }
     }
-
     if (updates.page !== undefined) {
       if (updates.page > 1) {
-        params.set("page", updates.page.toString());
+        params.set("page", String(updates.page));
       } else {
         params.delete("page");
       }
     }
 
-    const newUrl = `/${currentRegion}${params.toString() ? `?${params.toString()}` : ""
-      }`;
-    router.push(newUrl, { scroll: false });
+    const qs = params.toString();
+    router.push(`/${currentRegion}${qs ? `?${qs}` : ""}`, { scroll: false });
   };
 
-  // Filter shops by current region
   const filteredShops = useMemo(() => {
     let filtered = allShops.filter((shop) => shop.sourceArea === currentRegion);
 
-    // Apply keyword filter
     if (searchKeyword) {
       const keyword = searchKeyword.toLowerCase();
       filtered = filtered.filter(
@@ -136,18 +116,14 @@ export default function RegionPage() {
       );
     }
 
-    // Apply industry filter - only if industry is selected
-    if (selectedIndustry && selectedIndustry !== "") {
+    if (selectedIndustry) {
       const industryType = industryTypes.find((t) => t.id === selectedIndustry);
       if (industryType) {
-        filtered = filtered.filter((shop) =>
-          shop.genres.includes(industryType.name)
-        );
+        filtered = filtered.filter((shop) => shop.genres.includes(industryType.name));
       }
     }
 
-    // Apply area filter - calculate city names and filter
-    if (selectedArea && selectedArea !== "" && currentRegionData) {
+    if (selectedArea && currentRegionData) {
       let cityNames: string[] = [];
 
       for (const pref of currentRegionData.prefectures) {
@@ -163,23 +139,13 @@ export default function RegionPage() {
       }
 
       if (cityNames.length > 0) {
-        filtered = filtered.filter((shop) => {
-          return cityNames.some((cityName) => shop.area.includes(cityName));
-        });
+        filtered = filtered.filter((shop) => cityNames.some((cityName) => shop.area.includes(cityName)));
       }
     }
 
     return filtered;
-  }, [
-    allShops,
-    currentRegion,
-    selectedArea,
-    currentRegionData,
-    selectedIndustry,
-    searchKeyword,
-  ]);
+  }, [allShops, currentRegion, selectedArea, currentRegionData, selectedIndustry, searchKeyword]);
 
-  // Pagination
   const totalPages = Math.ceil(filteredShops.length / ITEMS_PER_PAGE);
   const paginatedShops = filteredShops.slice(
     (currentPage - 1) * ITEMS_PER_PAGE,
@@ -187,35 +153,23 @@ export default function RegionPage() {
   );
 
   const handleFilterChange = (areaSlug: string, industryId: string) => {
-    // Apply both filters together
-    updateURLParams({
-      industry: industryId,
-      area: areaSlug,
-      page: 1,
-    });
+    updateURLParams({ industry: industryId, area: areaSlug, page: 1 });
   };
 
   const handleAreaClick = (prefectureName: string, cityNames: string[]) => {
-    if (!cityNames || cityNames.length === 0) return; // safety check
+    if (!cityNames?.length) return;
 
     let areaSlug = "";
 
     if (currentRegionData) {
       for (const pref of currentRegionData.prefectures) {
-        const prefCityNames = pref.cities
-          .filter((c) => !c.disabled)
-          .map((c) => c.name);
+        const prefCityNames = pref.cities.filter((c) => !c.disabled).map((c) => c.name);
 
-        // prefecture-wide selected
-        if (
-          JSON.stringify([...cityNames].sort()) ===
-          JSON.stringify([...prefCityNames].sort())
-        ) {
+        if (JSON.stringify([...cityNames].sort()) === JSON.stringify([...prefCityNames].sort())) {
           areaSlug = pref.slug;
           break;
         }
 
-        // single city
         const city = pref.cities.find((c) => c.name === cityNames[0]);
         if (city?.slug) {
           areaSlug = city.slug;
@@ -224,21 +178,12 @@ export default function RegionPage() {
       }
     }
 
-    updateURLParams({
-      area: areaSlug,
-      industry: "",
-      page: 1,
-    });
+    updateURLParams({ area: areaSlug, industry: "", page: 1 });
   };
 
   const handleIndustryClick = (industryName: string) => {
-    // Find industry ID from name
     const industryType = industryTypes.find((t) => t.name === industryName);
-    updateURLParams({
-      area: "",
-      industry: industryType?.id || "",
-      page: 1,
-    });
+    updateURLParams({ area: "", industry: industryType?.id || "", page: 1 });
   };
 
   const handlePageChange = (page: number) => {
@@ -248,7 +193,9 @@ export default function RegionPage() {
 
   const currentDate = useMemo(() => {
     const now = new Date();
-    return `${now.getFullYear()}年${String(now.getMonth() + 1).padStart(2, "0")}月${String(now.getDate()).padStart(2, "0")}日`;
+    return `${now.getFullYear()}年${String(now.getMonth() + 1).padStart(2, "0")}月${String(
+      now.getDate()
+    ).padStart(2, "0")}日`;
   }, []);
 
   const handleHeaderPrefectureClick = (prefectureSlug: string) => {
@@ -260,7 +207,9 @@ export default function RegionPage() {
       <div className="app-container">
         <header className="landing-header region-page-header">
           <div className="landing-header-content">
-            <h1 className="landing-title">メンズエステ求人情報サイト｜はじめてのメンズエステアルバイト【はじエス】</h1>
+            <h1 className="landing-title">
+              メンズエステ求人情報サイト｜はじめてのメンズエステアルバイト【はじエス】
+            </h1>
             <div className="header-box">
               <div className="logobox">
                 <Link href="/" className="logo">
