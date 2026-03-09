@@ -9,9 +9,8 @@ import FilterBar from "@/components/FilterBar";
 import ShopCard from "@/components/ShopCard";
 import Pagination from "@/components/Pagination";
 import { Region, Shop, IndustryType } from "@/types";
-import { calculateShopCounts, calculatePrefectureCounts } from "@/lib/shopCounts";
+import { calculateShopCounts, calculatePrefectureCounts, calculateIndustryCounts } from "@/lib/shopCounts";
 import areasData from "@/mockup/areas.json";
-import shopsData from "@/mockup/shops.json";
 
 const ITEMS_PER_PAGE = 10;
 
@@ -31,7 +30,48 @@ const regionInfo: Record<string, { name: string; nameEn: string }> = {
   kyusyuokinawa: { name: "九州・沖縄", nameEn: "KYUSHU・OKINAWA" },
 };
 
-export default function RegionPageClient({ region }: { region: string }) {
+function applySearchParam(
+  params: URLSearchParams,
+  key: string,
+  value: string | number | undefined,
+  shouldSet: (v: string | number) => boolean = Boolean
+) {
+  if (value === undefined) return;
+  if (shouldSet(value)) {
+    params.set(key, String(value));
+  } else {
+    params.delete(key);
+  }
+}
+
+function shopMatchesKeyword(shop: Shop, keyword: string): boolean {
+  return (
+    shop.name.toLowerCase().includes(keyword) ||
+    shop.alias.toLowerCase().includes(keyword) ||
+    (shop.catchCopy?.toLowerCase().includes(keyword) ?? false) ||
+    shop.area.toLowerCase().includes(keyword)
+  );
+}
+
+function getCityNamesForArea(selectedArea: string, regionData: Region | undefined): string[] {
+  if (!regionData) return [];
+  for (const pref of regionData.prefectures) {
+    if (pref.slug === selectedArea) {
+      return pref.cities.filter((c) => !c.disabled).map((c) => c.name);
+    }
+    const city = pref.cities.find((c) => c.slug === selectedArea);
+    if (city) return [city.name];
+  }
+  return [];
+}
+
+export default function RegionPageClient({
+  region,
+  initialShops,
+}: Readonly<{
+  region: string;
+  initialShops: Shop[];
+}>) {
   const searchParams = useSearchParams();
   const router = useRouter();
   const currentRegion = region;
@@ -40,10 +80,10 @@ export default function RegionPageClient({ region }: { region: string }) {
   const selectedArea = searchParams.get("area") || "";
   const selectedIndustry = searchParams.get("industry") || "";
   const searchKeyword = searchParams.get("keyword") || "";
-  const currentPage = parseInt(searchParams.get("page") || "1", 10);
+  const currentPage = Number.parseInt(searchParams.get("page") || "1", 10);
 
   const regions = areasData as Region[];
-  const allShops = shopsData as unknown as Shop[];
+  const allShops = initialShops;
 
   const currentRegionData = regions.find((r) => r.region === currentRegion);
   const regionDisplayInfo = regionInfo[currentRegion] || {
@@ -61,6 +101,11 @@ export default function RegionPageClient({ region }: { region: string }) {
     return calculatePrefectureCounts(allShops, currentRegion, currentRegionData);
   }, [allShops, currentRegion, currentRegionData]);
 
+  const industryCountMap = useMemo(
+    () => calculateIndustryCounts(allShops, currentRegion, industryTypes),
+    [allShops, currentRegion]
+  );
+
   const updateURLParams = (updates: {
     area?: string;
     industry?: string;
@@ -68,52 +113,20 @@ export default function RegionPageClient({ region }: { region: string }) {
     page?: number;
   }) => {
     const params = new URLSearchParams(searchParams.toString());
-
-    if (updates.area !== undefined) {
-      if (updates.area) {
-        params.set("area", updates.area);
-      } else {
-        params.delete("area");
-      }
-    }
-    if (updates.industry !== undefined) {
-      if (updates.industry) {
-        params.set("industry", updates.industry);
-      } else {
-        params.delete("industry");
-      }
-    }
-    if (updates.keyword !== undefined) {
-      if (updates.keyword) {
-        params.set("keyword", updates.keyword);
-      } else {
-        params.delete("keyword");
-      }
-    }
-    if (updates.page !== undefined) {
-      if (updates.page > 1) {
-        params.set("page", String(updates.page));
-      } else {
-        params.delete("page");
-      }
-    }
+    applySearchParam(params, "area", updates.area);
+    applySearchParam(params, "industry", updates.industry);
+    applySearchParam(params, "keyword", updates.keyword);
+    applySearchParam(params, "page", updates.page, (v) => typeof v === "number" && v > 1);
 
     const qs = params.toString();
-    router.push(`/${currentRegion}${qs ? `?${qs}` : ""}`, { scroll: false });
+    router.push(`/${currentRegion}${qs ? "?" + qs : ""}`, { scroll: false });
   };
 
   const filteredShops = useMemo(() => {
     let filtered = allShops.filter((shop) => shop.sourceArea === currentRegion);
 
     if (searchKeyword) {
-      const keyword = searchKeyword.toLowerCase();
-      filtered = filtered.filter(
-        (shop) =>
-          shop.name.toLowerCase().includes(keyword) ||
-          shop.alias.toLowerCase().includes(keyword) ||
-          (shop.catchCopy && shop.catchCopy.toLowerCase().includes(keyword)) ||
-          shop.area.toLowerCase().includes(keyword)
-      );
+      filtered = filtered.filter((shop) => shopMatchesKeyword(shop, searchKeyword.toLowerCase()));
     }
 
     if (selectedIndustry) {
@@ -123,24 +136,9 @@ export default function RegionPageClient({ region }: { region: string }) {
       }
     }
 
-    if (selectedArea && currentRegionData) {
-      let cityNames: string[] = [];
-
-      for (const pref of currentRegionData.prefectures) {
-        if (pref.slug === selectedArea) {
-          cityNames = pref.cities.filter((c) => !c.disabled).map((c) => c.name);
-          break;
-        }
-        const city = pref.cities.find((c) => c.slug === selectedArea);
-        if (city) {
-          cityNames = [city.name];
-          break;
-        }
-      }
-
-      if (cityNames.length > 0) {
-        filtered = filtered.filter((shop) => cityNames.some((cityName) => shop.area.includes(cityName)));
-      }
+    const cityNames = getCityNamesForArea(selectedArea, currentRegionData);
+    if (cityNames.length > 0) {
+      filtered = filtered.filter((shop) => cityNames.some((cityName) => shop.area.includes(cityName)));
     }
 
     return filtered;
@@ -165,7 +163,10 @@ export default function RegionPageClient({ region }: { region: string }) {
       for (const pref of currentRegionData.prefectures) {
         const prefCityNames = pref.cities.filter((c) => !c.disabled).map((c) => c.name);
 
-        if (JSON.stringify([...cityNames].sort()) === JSON.stringify([...prefCityNames].sort())) {
+        if (
+          JSON.stringify([...cityNames].sort((a, b) => a.localeCompare(b))) ===
+          JSON.stringify([...prefCityNames].sort((a, b) => a.localeCompare(b)))
+        ) {
           areaSlug = pref.slug;
           break;
         }
@@ -273,6 +274,7 @@ export default function RegionPageClient({ region }: { region: string }) {
             <ul className="header-menu">
               <li className="data">
                 <em>{currentDate}更新</em>
+                {' '}
                 メンズエステ求人情報<span>{filteredShops.length}</span>件掲載
               </li>
             </ul>
@@ -310,6 +312,7 @@ export default function RegionPageClient({ region }: { region: string }) {
             selectedIndustry={selectedIndustry}
             cityCountMap={cityCountMap}
             prefectureCountMap={prefectureCountMap}
+            industryCountMap={industryCountMap}
             onSearch={(keyword) => updateURLParams({ keyword, page: 1 })}
             onAreaClick={(prefectureName, cityNames) =>
               handleAreaClick(prefectureName, cityNames)

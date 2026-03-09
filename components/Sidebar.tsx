@@ -11,6 +11,7 @@ interface SidebarProps {
   selectedIndustry: string;
   cityCountMap: Map<string, number>;
   prefectureCountMap: Map<string, number>;
+  industryCountMap: Map<string, number>;
   onSearch: (keyword: string) => void;
   onAreaClick: (prefectureName: string, cityNames: string[]) => void;
   onIndustryClick: (industryId: string) => void;
@@ -24,10 +25,11 @@ export default function Sidebar({
   selectedIndustry,
   cityCountMap,
   prefectureCountMap,
+  industryCountMap,
   onSearch,
   onAreaClick,
   onIndustryClick
-}: SidebarProps) {
+}: Readonly<SidebarProps>) {
   const [keyword, setKeyword] = useState("");
 
   const handleSearch = (e: React.FormEvent) => {
@@ -76,17 +78,20 @@ export default function Sidebar({
       <div className="filter-section">
         <h3 className="filter-title">ジャンルで探す</h3>
         <ul className="filter-list">
-          {industryTypes.map((type) => (
-            <li key={type.id}>
-              <a 
-                href="#"
-                onClick={(e) => handleIndustryClick(e, type.name)}
-                className={selectedIndustry === type.id ? "is-selected" : undefined}
-              >
-                {type.name}
-              </a>
-            </li>
-          ))}
+          {industryTypes.map((type) => {
+            const count = industryCountMap.get(type.name) ?? 0;
+            return (
+              <li key={type.id}>
+                <button
+                  type="button"
+                  onClick={(e) => handleIndustryClick(e, type.name)}
+                  className={selectedIndustry === type.id ? "is-selected" : undefined}
+                >
+                  {type.name}({count})
+                </button>
+              </li>
+            );
+          })}
         </ul>
       </div>
 
@@ -106,34 +111,35 @@ export default function Sidebar({
             
             return (
               <div key={prefecture.slug} className="prefecture-section">
-                <a 
-                  href="#"
+                <button
+                  type="button"
                   onClick={(e) => handlePrefectureClick(e, prefecture.name, prefecture.cities)}
                   className={`prefecture-link${isPrefectureSelected ? " is-selected" : ""}`}
                 >
                   {prefecture.name}({prefectureCount})
-                </a>
+                </button>
                 <ul className="city-list">
-                  {prefecture.cities.map((city, idx) => {
+                  {prefecture.cities.map((city) => {
                     const cityCount = cityCountMap.get(city.name) || 0;
                     const isCitySelected =
                       normalizedArea === city.slug ||
                       normalizedArea === city.name;
-                    
+                    const cityKey = `${prefecture.slug}-${city.slug ?? city.name}`;
+
                     return (
-                      <li key={idx}>
-                        {!city.disabled ? (
-                          <a 
-                            href="#"
+                      <li key={cityKey}>
+                        {city.disabled ? (
+                          <span className="disabled">
+                            {city.name}({cityCount})
+                          </span>
+                        ) : (
+                          <button
+                            type="button"
                             onClick={(e) => handleCityClick(e, city.name)}
                             className={isCitySelected ? "is-selected" : undefined}
                           >
                             {city.name}({cityCount})
-                          </a>
-                        ) : (
-                          <span className="disabled">
-                            {city.name}({cityCount})
-                          </span>
+                          </button>
                         )}
                       </li>
                     );
