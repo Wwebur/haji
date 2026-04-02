@@ -22,8 +22,9 @@ export default function ShopMainImageSwiper({
   // For 1 image, duplicate so the carousel can loop infinitely (same image repeated).
   const slides = useMemo(() => {
     let list: string[];
-    if (images.length > 0) {
-      list = [...images];
+    const validImages = images.filter((img) => img);
+    if (validImages.length > 0) {
+      list = validImages;
     } else if (fallbackImage) {
       list = [fallbackImage];
     } else {
