@@ -126,7 +126,7 @@ export async function fetchShopsByRegion(region: string): Promise<Shop[]> {
   return (data ?? []).map(rowToShop);
 }
 
-/** Fetch one shop with its detail by region and id. Returns null if not found or detail missing breadcrumbs. */
+/** Fetch one shop with its detail by region and id. Returns null if not found or detail missing. */
 export async function fetchShopWithDetail(
   region: string,
   id: string
@@ -151,7 +151,7 @@ export async function fetchShopWithDetail(
   if (detailError || !detailRow?.detail) return null;
 
   const detail = detailRow.detail as ShopDetail;
-  if (!detail?.breadcrumbs?.length) return null;
+  if (!detail.breadcrumbs) detail.breadcrumbs = [];
 
   const shop = rowToShop(shopRow);
   return { ...shop, detail };
