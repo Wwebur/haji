@@ -6,169 +6,169 @@
         "name": "東京都",
         "slug": "area_tokyo",
         "url": "https://haji-s.com/kantou/area_tokyo",
-        "count": 953,
+        "count": 488,
         "cities": [
           {
             "name": "新宿・歌舞伎町・新大久保・高田馬場",
             "slug": "shinjuku",
             "url": "https://haji-s.com/kantou/area_tokyo/shinjuku",
-            "count": 126
+            "count": 73
           },
           {
             "name": "池袋",
             "slug": "ikebukuro",
             "url": "https://haji-s.com/kantou/area_tokyo/ikebukuro",
-            "count": 88
+            "count": 68
           },
           {
             "name": "巣鴨・大塚",
             "slug": "sugamo",
             "url": "https://haji-s.com/kantou/area_tokyo/sugamo",
-            "count": 22
+            "count": 14
           },
           {
             "name": "赤羽・板橋",
             "slug": "akabane",
             "url": "https://haji-s.com/kantou/area_tokyo/akabane",
-            "count": 40
+            "count": 27
           },
           {
             "name": "渋谷・恵比寿・目黒・中目黒・代々木",
             "slug": "shibuya",
             "url": "https://haji-s.com/kantou/area_tokyo/shibuya",
-            "count": 99
+            "count": 61
           },
           {
             "name": "六本木・麻布・麻布十番",
             "slug": "roppongi",
             "url": "https://haji-s.com/kantou/area_tokyo/roppongi",
-            "count": 39
+            "count": 19
           },
           {
             "name": "三軒茶屋・自由が丘・二子玉川",
             "slug": "sangenjaya-jiyugaoka",
             "url": "https://haji-s.com/kantou/area_tokyo/sangenjaya-jiyugaoka",
-            "count": 29
+            "count": 16
           },
           {
             "name": "西日暮里・日暮里",
             "slug": "nishinitupori",
             "url": "https://haji-s.com/kantou/area_tokyo/nishinitupori",
-            "count": 14
+            "count": 7
           },
           {
             "name": "上野・御徒町",
             "slug": "ueno",
             "url": "https://haji-s.com/kantou/area_tokyo/ueno",
-            "count": 41
+            "count": 24
           },
           {
             "name": "神田・秋葉原",
             "slug": "kanda",
             "url": "https://haji-s.com/kantou/area_tokyo/kanda",
-            "count": 59
+            "count": 29
           },
           {
             "name": "北千住・金町",
             "slug": "kitasenju",
             "url": "https://haji-s.com/kantou/area_tokyo/kitasenju",
-            "count": 25
+            "count": 12
           },
           {
             "name": "水道橋・飯田橋",
             "slug": "suidobashi",
             "url": "https://haji-s.com/kantou/area_tokyo/suidobashi",
-            "count": 8
+            "count": 6
           },
           {
             "name": "新橋・銀座",
             "slug": "shinbashi",
             "url": "https://haji-s.com/kantou/area_tokyo/shinbashi",
-            "count": 83
+            "count": 37
           },
           {
             "name": "五反田・蒲田・大森・目黒",
             "slug": "gotanda",
             "url": "https://haji-s.com/kantou/area_tokyo/gotanda",
-            "count": 66
+            "count": 34
           },
           {
             "name": "錦糸町・小岩",
             "slug": "kinshicho",
             "url": "https://haji-s.com/kantou/area_tokyo/kinshicho",
-            "count": 53
+            "count": 32
           },
           {
             "name": "葛西・門前仲町",
             "slug": "kasai",
             "url": "https://haji-s.com/kantou/area_tokyo/kasai",
-            "count": 30
+            "count": 13
           },
           {
             "name": "立川・八王子",
             "slug": "tachikawa",
             "url": "https://haji-s.com/kantou/area_tokyo/tachikawa",
-            "count": 41
+            "count": 19
           },
           {
             "name": "調布・府中・国分寺",
             "slug": "chofu",
             "url": "https://haji-s.com/kantou/area_tokyo/chofu",
-            "count": 27
+            "count": 10
           },
           {
             "name": "吉祥寺・中野・武蔵小金井",
             "slug": "nakano",
             "url": "https://haji-s.com/kantou/area_tokyo/nakano",
-            "count": 38
+            "count": 21
           },
           {
             "name": "町田",
             "slug": "machida",
             "url": "https://haji-s.com/kantou/area_tokyo/machida",
-            "count": 17
+            "count": 9
           },
           {
             "name": "その他西東京",
             "slug": "nishitokyo",
             "url": "https://haji-s.com/kantou/area_tokyo/nishitokyo",
-            "count": 6
+            "count": 4
           },
           {
             "name": "東京その他",
             "slug": "tokyosonota",
             "url": "https://haji-s.com/kantou/area_tokyo/tokyosonota",
-            "count": 11
+            "count": 4
           },
           {
             "name": "東京23区出張",
             "slug": "tokyonizyusanku",
             "url": "https://haji-s.com/kantou/area_tokyo/tokyonizyusanku",
-            "count": 32
+            "count": 17
           },
           {
             "name": "経堂・下北沢",
             "slug": "kiyodo ・simokita",
             "url": "https://haji-s.com/kantou/area_tokyo/kiyodo%20%E3%83%BBsimokita",
-            "count": 12
+            "count": 2
           },
           {
             "name": "四谷",
             "slug": "yotuya",
             "url": "https://haji-s.com/kantou/area_tokyo/yotuya",
-            "count": 6
+            "count": 4
           },
           {
             "name": "練馬",
             "slug": "nerima",
             "url": "https://haji-s.com/kantou/area_tokyo/nerima",
-            "count": 24
+            "count": 12
           },
           {
             "name": "両国",
             "slug": "rixyogoku",
             "url": "https://haji-s.com/kantou/area_tokyo/rixyogoku",
-            "count": 3
+            "count": 2
           }
         ]
       },
@@ -176,55 +176,55 @@
         "name": "神奈川県",
         "slug": "area_kanagawa",
         "url": "https://haji-s.com/kantou/area_kanagawa",
-        "count": 203,
+        "count": 102,
         "cities": [
           {
             "name": "横浜・新横浜",
             "slug": "yokohama",
             "url": "https://haji-s.com/kantou/area_kanagawa/yokohama",
-            "count": 57
+            "count": 38
           },
           {
             "name": "関内・桜木町",
             "slug": "kannai",
             "url": "https://haji-s.com/kantou/area_kanagawa/kannai",
-            "count": 38
+            "count": 20
           },
           {
             "name": "川崎・鶴見",
             "slug": "kawasaki",
             "url": "https://haji-s.com/kantou/area_kanagawa/kawasaki",
-            "count": 30
+            "count": 17
           },
           {
             "name": "武蔵小杉・溝の口・登戸",
             "slug": "musashikosugi",
             "url": "https://haji-s.com/kantou/area_kanagawa/musashikosugi",
-            "count": 34
+            "count": 15
           },
           {
             "name": "厚木・相模原・蛯名",
             "slug": "atugi",
             "url": "https://haji-s.com/kantou/area_kanagawa/atugi",
-            "count": 27
+            "count": 15
           },
           {
             "name": "藤沢・平塚・小田原",
             "slug": "fujisawa",
             "url": "https://haji-s.com/kantou/area_kanagawa/fujisawa",
-            "count": 26
+            "count": 14
           },
           {
             "name": "戸塚・横須賀",
             "slug": "totuka",
             "url": "https://haji-s.com/kantou/area_kanagawa/totuka",
-            "count": 6
+            "count": 2
           },
           {
             "name": "その他神奈川",
             "slug": "sonotakanagawa",
             "url": "https://haji-s.com/kantou/area_kanagawa/sonotakanagawa",
-            "count": 10
+            "count": 3
           }
         ]
       },
@@ -232,43 +232,43 @@
         "name": "埼玉県",
         "slug": "area_saitama",
         "url": "https://haji-s.com/kantou/area_saitama",
-        "count": 168,
+        "count": 82,
         "cities": [
           {
             "name": "大宮・川口・浦和",
             "slug": "omiya",
             "url": "https://haji-s.com/kantou/area_saitama/omiya",
-            "count": 74
+            "count": 39
           },
           {
             "name": "所沢・川越",
             "slug": "tokorozawa",
             "url": "https://haji-s.com/kantou/area_saitama/tokorozawa",
-            "count": 35
+            "count": 14
           },
           {
             "name": "春日部・越谷・熊谷・草加",
             "slug": "kasukabe",
             "url": "https://haji-s.com/kantou/area_saitama/kasukabe",
-            "count": 39
+            "count": 23
           },
           {
             "name": "志木・朝霞台",
             "slug": "shiki",
             "url": "https://haji-s.com/kantou/area_saitama/shiki",
-            "count": 9
+            "count": 4
           },
           {
             "name": "その他",
             "slug": "sonota",
             "url": "https://haji-s.com/kantou/area_saitama/sonota",
-            "count": 10
+            "count": 4
           },
           {
             "name": "蕨",
             "slug": "wrabi",
             "url": "https://haji-s.com/kantou/area_saitama/wrabi",
-            "count": 4
+            "count": 3
           }
         ]
       },
@@ -276,31 +276,31 @@
         "name": "千葉県",
         "slug": "area_chiba",
         "url": "https://haji-s.com/kantou/area_chiba",
-        "count": 152,
+        "count": 90,
         "cities": [
           {
             "name": "松戸・柏",
             "slug": "matsudo",
             "url": "https://haji-s.com/kantou/area_chiba/matsudo",
-            "count": 42
+            "count": 22
           },
           {
             "name": "千葉市・千葉中央・栄町",
             "slug": "chibashi",
             "url": "https://haji-s.com/kantou/area_chiba/chibashi",
-            "count": 42
+            "count": 27
           },
           {
             "name": "船橋・津田沼・本八幡・西船橋",
             "slug": "funabashi",
             "url": "https://haji-s.com/kantou/area_chiba/funabashi",
-            "count": 53
+            "count": 37
           },
           {
             "name": "その他千葉",
             "slug": "sonotachiba",
             "url": "https://haji-s.com/kantou/area_chiba/sonotachiba",
-            "count": 25
+            "count": 12
           }
         ]
       },
@@ -308,25 +308,25 @@
         "name": "茨城県",
         "slug": "area_ibaraki",
         "url": "https://haji-s.com/kantou/area_ibaraki",
-        "count": 55,
+        "count": 23,
         "cities": [
           {
             "name": "水戸",
             "slug": "mito",
             "url": "https://haji-s.com/kantou/area_ibaraki/mito",
-            "count": 20
+            "count": 11
           },
           {
             "name": "土浦・つくば",
             "slug": "tutiura",
             "url": "https://haji-s.com/kantou/area_ibaraki/tutiura",
-            "count": 16
+            "count": 4
           },
           {
             "name": "茨城その他",
             "slug": "ibarakietc",
             "url": "https://haji-s.com/kantou/area_ibaraki/ibarakietc",
-            "count": 19
+            "count": 8
           }
         ]
       },
@@ -334,25 +334,25 @@
         "name": "栃木県",
         "slug": "area_tochigi",
         "url": "https://haji-s.com/kantou/area_tochigi",
-        "count": 53,
+        "count": 34,
         "cities": [
           {
             "name": "宇都宮・南宇都宮",
             "slug": "utsunomiya",
             "url": "https://haji-s.com/kantou/area_tochigi/utsunomiya",
-            "count": 27
+            "count": 19
           },
           {
             "name": "小山・那須塩原",
             "slug": "koyama",
             "url": "https://haji-s.com/kantou/area_tochigi/koyama",
-            "count": 17
+            "count": 11
           },
           {
             "name": "栃木その他",
             "slug": "tochigietc",
             "url": "https://haji-s.com/kantou/area_tochigi/tochigietc",
-            "count": 10
+            "count": 5
           }
         ]
       },
@@ -360,19 +360,19 @@
         "name": "群馬県",
         "slug": "area_gumma",
         "url": "https://haji-s.com/kantou/area_gumma",
-        "count": 52,
+        "count": 21,
         "cities": [
           {
             "name": "高崎・前橋",
             "slug": "takasaki",
             "url": "https://haji-s.com/kantou/area_gumma/takasaki",
-            "count": 31
+            "count": 12
           },
           {
             "name": "伊勢崎",
             "slug": "isezaki",
             "url": "https://haji-s.com/kantou/area_gumma/isezaki",
-            "count": 11
+            "count": 4
           },
           {
             "name": "新町",
@@ -392,7 +392,7 @@
             "name": "太田",
             "slug": "oota",
             "url": "https://haji-s.com/kantou/area_gumma/oota",
-            "count": 6
+            "count": 4
           },
           {
             "name": "木崎",
@@ -433,7 +433,7 @@
             "name": "群馬その他",
             "slug": "gunmaetc",
             "url": "https://haji-s.com/kantou/area_gumma/gunmaetc",
-            "count": 4
+            "count": 1
           }
         ]
       }
@@ -446,13 +446,13 @@
         "name": "大阪府",
         "slug": "area_osaka",
         "url": "https://haji-s.com/kansai/area_osaka",
-        "count": 577,
+        "count": 397,
         "cities": [
           {
             "name": "梅田・東梅田・北新地",
             "slug": "umeda",
             "url": "https://haji-s.com/kansai/area_osaka/umeda",
-            "count": 145
+            "count": 104
           },
           {
             "name": "福島",
@@ -464,13 +464,13 @@
             "name": "京橋・桜ノ宮・都島",
             "slug": "kyobashi",
             "url": "https://haji-s.com/kansai/area_osaka/kyobashi",
-            "count": 40
+            "count": 33
           },
           {
             "name": "天満・南森町・北浜",
             "slug": "tenman",
             "url": "https://haji-s.com/kansai/area_osaka/tenman",
-            "count": 18
+            "count": 17
           },
           {
             "name": "北浜・淀屋橋・肥後橋",
@@ -482,34 +482,35 @@
             "name": "堺筋本町・本町・阿波座",
             "slug": "sakaisujihonmachi",
             "url": "https://haji-s.com/kansai/area_osaka/sakaisujihonmachi",
-            "count": 142
+            "count": 106
           },
           {
             "name": "心斎橋・堀江・新町",
             "slug": "shinsaibashi",
             "url": "https://haji-s.com/kansai/area_osaka/shinsaibashi",
-            "count": 29
+            "count": 23
           },
           {
             "name": "南船場・松屋町・長堀橋",
             "slug": "minamisenba",
             "url": "https://haji-s.com/kansai/area_osaka/minamisenba",
-            "count": 30
+            "count": 21
           },
           {
             "name": "難波・日本橋・桜川",
             "slug": "nipponbashi",
             "url": "https://haji-s.com/kansai/area_osaka/nipponbashi",
-            "count": 210
+            "count": 143
           },
           {
             "name": "八尾・東大阪",
-            "slug": "yao",
-            "url": "https://haji-s.com/kansai/area_osaka/yao",
-            "count": 2
+            "slug": null,
+            "url": null,
+            "count": 0,
+            "disabled": true
           },
           {
-            "name": "守口・枚方・門真",
+            "name": "枚方・守口・門真",
             "slug": "hirakata",
             "url": "https://haji-s.com/kansai/area_osaka/hirakata",
             "count": 7
@@ -518,49 +519,49 @@
             "name": "和泉・泉大津・泉南・岸和田",
             "slug": "izumiootsu",
             "url": "https://haji-s.com/kansai/area_osaka/izumiootsu",
-            "count": 10
+            "count": 9
           },
           {
             "name": "堺・堺東",
             "slug": "sakai",
             "url": "https://haji-s.com/kansai/area_osaka/sakai",
-            "count": 38
+            "count": 32
           },
           {
             "name": "大阪市内その他",
             "slug": "osaka-sonota",
             "url": "https://haji-s.com/kansai/area_osaka/osaka-sonota",
-            "count": 7
+            "count": 8
           },
           {
             "name": "十三・西中島・新大阪・東三国",
             "slug": "juso",
             "url": "https://haji-s.com/kansai/area_osaka/juso",
-            "count": 70
+            "count": 51
           },
           {
             "name": "天王寺・寺田町・花園町",
             "slug": "tennoji",
             "url": "https://haji-s.com/kansai/area_osaka/tennoji",
-            "count": 8
+            "count": 7
           },
           {
             "name": "谷九・鶴橋・上本町",
             "slug": "tanikyu",
             "url": "https://haji-s.com/kansai/area_osaka/tanikyu",
-            "count": 53
+            "count": 45
           },
           {
             "name": "谷四・谷六・天満橋",
             "slug": "taniyon",
             "url": "https://haji-s.com/kansai/area_osaka/taniyon",
-            "count": 6
+            "count": 3
           },
           {
             "name": "その他",
             "slug": "sonota",
             "url": "https://haji-s.com/kansai/area_osaka/sonota",
-            "count": 10
+            "count": 7
           }
         ]
       },
@@ -568,13 +569,13 @@
         "name": "兵庫県",
         "slug": "area_hyogo",
         "url": "https://haji-s.com/kansai/area_hyogo",
-        "count": 134,
+        "count": 82,
         "cities": [
           {
             "name": "神戸・三宮",
             "slug": "kobe",
             "url": "https://haji-s.com/kansai/area_hyogo/kobe",
-            "count": 75
+            "count": 42
           },
           {
             "name": "元町",
@@ -586,7 +587,7 @@
             "name": "尼崎",
             "slug": "amagasaki",
             "url": "https://haji-s.com/kansai/area_hyogo/amagasaki",
-            "count": 11
+            "count": 9
           },
           {
             "name": "福原",
@@ -604,7 +605,7 @@
             "name": "芦屋",
             "slug": "asiya",
             "url": "https://haji-s.com/kansai/area_hyogo/asiya",
-            "count": 1
+            "count": 2
           },
           {
             "name": "宝塚",
@@ -615,10 +616,9 @@
           },
           {
             "name": "兵庫",
-            "slug": null,
-            "url": null,
-            "count": 0,
-            "disabled": true
+            "slug": "hixyogo",
+            "url": "https://haji-s.com/kansai/area_hyogo/hixyogo",
+            "count": 1
           },
           {
             "name": "神戸出張",
@@ -630,13 +630,13 @@
             "name": "姫路",
             "slug": "himeji",
             "url": "https://haji-s.com/kansai/area_hyogo/himeji",
-            "count": 37
+            "count": 26
           },
           {
             "name": "明石・西明石",
             "slug": "akasi",
             "url": "https://haji-s.com/kansai/area_hyogo/akasi",
-            "count": 13
+            "count": 6
           },
           {
             "name": "加古川・東加古川",
@@ -646,10 +646,9 @@
           },
           {
             "name": "その他",
-            "slug": null,
-            "url": null,
-            "count": 0,
-            "disabled": true
+            "slug": "sonota",
+            "url": "https://haji-s.com/kansai/area_hyogo/sonota",
+            "count": 2
           }
         ]
       },
@@ -657,37 +656,37 @@
         "name": "京都府",
         "slug": "area_kyoto",
         "url": "https://haji-s.com/kansai/area_kyoto",
-        "count": 119,
+        "count": 83,
         "cities": [
           {
             "name": "祇園・河原町・木屋町",
             "slug": "gion",
             "url": "https://haji-s.com/kansai/area_kyoto/gion",
-            "count": 26
+            "count": 19
           },
           {
             "name": "京都駅・伏見・南インター",
             "slug": "fushimi",
             "url": "https://haji-s.com/kansai/area_kyoto/fushimi",
-            "count": 74
+            "count": 49
           },
           {
             "name": "烏丸・烏丸五条",
             "slug": "karasuma",
             "url": "https://haji-s.com/kansai/area_kyoto/karasuma",
-            "count": 24
+            "count": 17
           },
           {
             "name": "四条・四条大宮",
             "slug": "sizyo",
             "url": "https://haji-s.com/kansai/area_kyoto/sizyo",
-            "count": 17
+            "count": 15
           },
           {
             "name": "京都出張",
             "slug": "kixyoto",
             "url": "https://haji-s.com/kansai/area_kyoto/kixyoto",
-            "count": 5
+            "count": 3
           },
           {
             "name": "その他",
@@ -699,7 +698,7 @@
             "name": "二条",
             "slug": "niziyo",
             "url": "https://haji-s.com/kansai/area_kyoto/niziyo",
-            "count": 5
+            "count": 4
           }
         ]
       },
@@ -707,19 +706,19 @@
         "name": "滋賀県",
         "slug": "area_shiga",
         "url": "https://haji-s.com/kansai/area_shiga",
-        "count": 13,
+        "count": 10,
         "cities": [
           {
             "name": "滋賀・雄琴",
             "slug": "ogoto",
             "url": "https://haji-s.com/kansai/area_shiga/ogoto",
-            "count": 5
+            "count": 4
           },
           {
             "name": "草津",
             "slug": "kusatu",
             "url": "https://haji-s.com/kansai/area_shiga/kusatu",
-            "count": 7
+            "count": 5
           },
           {
             "name": "南草津",
@@ -732,7 +731,7 @@
             "name": "その他",
             "slug": "sonota",
             "url": "https://haji-s.com/kansai/area_shiga/sonota",
-            "count": 2
+            "count": 1
           }
         ]
       },
@@ -740,13 +739,13 @@
         "name": "奈良県",
         "slug": "area_nara",
         "url": "https://haji-s.com/kansai/area_nara",
-        "count": 27,
+        "count": 19,
         "cities": [
           {
             "name": "奈良",
             "slug": "nara",
             "url": "https://haji-s.com/kansai/area_nara/nara",
-            "count": 16
+            "count": 14
           },
           {
             "name": "生駒",
@@ -758,13 +757,13 @@
             "name": "新大宮",
             "slug": "sinoomiya",
             "url": "https://haji-s.com/kansai/area_nara/sinoomiya",
-            "count": 5
+            "count": 4
           },
           {
             "name": "大和八木",
             "slug": "yamatoyagi",
             "url": "https://haji-s.com/kansai/area_nara/yamatoyagi",
-            "count": 3
+            "count": 4
           },
           {
             "name": "近鉄二階堂",
@@ -782,15 +781,16 @@
           },
           {
             "name": "高田市",
-            "slug": "takadasi",
-            "url": "https://haji-s.com/kansai/area_nara/takadasi",
-            "count": 1
+            "slug": null,
+            "url": null,
+            "count": 0,
+            "disabled": true
           },
           {
             "name": "橿原神宮",
             "slug": "kasiharazingu",
             "url": "https://haji-s.com/kansai/area_nara/kasiharazingu",
-            "count": 5
+            "count": 1
           },
           {
             "name": "木津",
@@ -818,25 +818,25 @@
         "name": "和歌山県",
         "slug": "area_wakayama",
         "url": "https://haji-s.com/kansai/area_wakayama",
-        "count": 17,
+        "count": 9,
         "cities": [
           {
             "name": "和歌山",
             "slug": "wakayama",
             "url": "https://haji-s.com/kansai/area_wakayama/wakayama",
-            "count": 16
+            "count": 9
           },
           {
             "name": "田中口",
             "slug": "tanakafguti",
             "url": "https://haji-s.com/kansai/area_wakayama/tanakafguti",
-            "count": 2
+            "count": 1
           },
           {
             "name": "その他",
             "slug": "sonota",
             "url": "https://haji-s.com/kansai/area_wakayama/sonota",
-            "count": 3
+            "count": 1
           }
         ]
       }
@@ -849,55 +849,55 @@
         "name": "愛知県",
         "slug": "area_aichi",
         "url": "https://haji-s.com/tokai/area_aichi",
-        "count": 158,
+        "count": 107,
         "cities": [
           {
             "name": "名駅・納屋橋",
             "slug": "meieki",
             "url": "https://haji-s.com/tokai/area_aichi/meieki",
-            "count": 31
+            "count": 20
           },
           {
             "name": "その他",
             "slug": "sonota",
             "url": "https://haji-s.com/tokai/area_aichi/sonota",
-            "count": 2
+            "count": 1
           },
           {
             "name": "刈谷・安城・豊田・岡崎・豊橋",
             "slug": "kariya",
             "url": "https://haji-s.com/tokai/area_aichi/kariya",
-            "count": 30
+            "count": 24
           },
           {
             "name": "尾張・一宮・春日井",
             "slug": "owari",
             "url": "https://haji-s.com/tokai/area_aichi/owari",
-            "count": 15
+            "count": 10
           },
           {
             "name": "金山・熱田",
             "slug": "kanayama",
             "url": "https://haji-s.com/tokai/area_aichi/kanayama",
-            "count": 13
+            "count": 12
           },
           {
             "name": "大曽根・黒川",
             "slug": "ozone",
             "url": "https://haji-s.com/tokai/area_aichi/ozone",
-            "count": 3
+            "count": 1
           },
           {
             "name": "千種・今池・池下",
             "slug": "chikusa",
             "url": "https://haji-s.com/tokai/area_aichi/chikusa",
-            "count": 12
+            "count": 9
           },
           {
             "name": "新栄町・東新町",
             "slug": "shinsakaemachi",
             "url": "https://haji-s.com/tokai/area_aichi/shinsakaemachi",
-            "count": 17
+            "count": 15
           },
           {
             "name": "大須・上前津・鶴舞",
@@ -909,19 +909,19 @@
             "name": "栄",
             "slug": "sakae",
             "url": "https://haji-s.com/tokai/area_aichi/sakae",
-            "count": 26
+            "count": 19
           },
           {
             "name": "錦・伏見",
             "slug": "nishiki",
             "url": "https://haji-s.com/tokai/area_aichi/nishiki",
-            "count": 33
+            "count": 21
           },
           {
             "name": "高岳・泉",
             "slug": "takaoka",
             "url": "https://haji-s.com/tokai/area_aichi/takaoka",
-            "count": 9
+            "count": 6
           },
           {
             "name": "丸の内・久屋",
@@ -935,19 +935,20 @@
         "name": "静岡県",
         "slug": "area_shizuoka",
         "url": "https://haji-s.com/tokai/area_shizuoka",
-        "count": 64,
+        "count": 39,
         "cities": [
           {
             "name": "静岡・浜松・沼津",
             "slug": "hamamatsu",
             "url": "https://haji-s.com/tokai/area_shizuoka/hamamatsu",
-            "count": 62
+            "count": 39
           },
           {
             "name": "その他",
-            "slug": "sonota",
-            "url": "https://haji-s.com/tokai/area_shizuoka/sonota",
-            "count": 2
+            "slug": null,
+            "url": null,
+            "count": 0,
+            "disabled": true
           }
         ]
       },
@@ -955,19 +956,20 @@
         "name": "岐阜県",
         "slug": "area_gifu",
         "url": "https://haji-s.com/tokai/area_gifu",
-        "count": 25,
+        "count": 16,
         "cities": [
           {
             "name": "岐阜・岐南・西岐阜",
             "slug": "gifu",
             "url": "https://haji-s.com/tokai/area_gifu/gifu",
-            "count": 20
+            "count": 12
           },
           {
             "name": "那加",
-            "slug": "naka",
-            "url": "https://haji-s.com/tokai/area_gifu/naka",
-            "count": 1
+            "slug": null,
+            "url": null,
+            "count": 0,
+            "disabled": true
           },
           {
             "name": "笠松",
@@ -1028,13 +1030,13 @@
         "name": "三重県",
         "slug": "area_mie",
         "url": "https://haji-s.com/tokai/area_mie",
-        "count": 23,
+        "count": 14,
         "cities": [
           {
             "name": "三重・四日市・松阪市",
             "slug": "mie",
             "url": "https://haji-s.com/tokai/area_mie/mie",
-            "count": 23
+            "count": 14
           },
           {
             "name": "高茶屋",
@@ -1080,25 +1082,25 @@
         "name": "北海道",
         "slug": "area_hokkaido",
         "url": "https://haji-s.com/hokkaidotohoku/area_hokkaido",
-        "count": 244,
+        "count": 107,
         "cities": [
           {
             "name": "すすきの・大通",
             "slug": "susukino",
             "url": "https://haji-s.com/hokkaidotohoku/area_hokkaido/susukino",
-            "count": 161
+            "count": 70
           },
           {
             "name": "帯広",
             "slug": "obihiro",
             "url": "https://haji-s.com/hokkaidotohoku/area_hokkaido/obihiro",
-            "count": 5
+            "count": 3
           },
           {
             "name": "旭川",
             "slug": "asahikawa",
             "url": "https://haji-s.com/hokkaidotohoku/area_hokkaido/asahikawa",
-            "count": 15
+            "count": 7
           },
           {
             "name": "小樽・岩見沢・江別",
@@ -1111,7 +1113,7 @@
             "name": "千歳・苫小牧",
             "slug": "chitose",
             "url": "https://haji-s.com/hokkaidotohoku/area_hokkaido/chitose",
-            "count": 8
+            "count": 4
           },
           {
             "name": "清田区・厚別区",
@@ -1123,25 +1125,25 @@
             "name": "白石区・豊平区・南区",
             "slug": "shiroishiku",
             "url": "https://haji-s.com/hokkaidotohoku/area_hokkaido/shiroishiku",
-            "count": 13
+            "count": 15
           },
           {
             "name": "西区・手稲区",
             "slug": "nishiku",
             "url": "https://haji-s.com/hokkaidotohoku/area_hokkaido/nishiku",
-            "count": 2
+            "count": 3
           },
           {
             "name": "札幌駅・北区・東区",
             "slug": "sapporo",
             "url": "https://haji-s.com/hokkaidotohoku/area_hokkaido/sapporo",
-            "count": 40
+            "count": 16
           },
           {
             "name": "その他",
             "slug": "sonota",
             "url": "https://haji-s.com/hokkaidotohoku/area_hokkaido/sonota",
-            "count": 19
+            "count": 8
           }
         ]
       },
@@ -1149,19 +1151,19 @@
         "name": "青森県",
         "slug": "area_aomori",
         "url": "https://haji-s.com/hokkaidotohoku/area_aomori",
-        "count": 11,
+        "count": 4,
         "cities": [
           {
             "name": "青森",
             "slug": "aomori",
             "url": "https://haji-s.com/hokkaidotohoku/area_aomori/aomori",
-            "count": 5
+            "count": 3
           },
           {
             "name": "その他",
             "slug": "sonota",
             "url": "https://haji-s.com/hokkaidotohoku/area_aomori/sonota",
-            "count": 6
+            "count": 1
           }
         ]
       },
@@ -1169,7 +1171,7 @@
         "name": "岩手県",
         "slug": "area_iwate",
         "url": "https://haji-s.com/hokkaidotohoku/area_iwate",
-        "count": 12,
+        "count": 5,
         "cities": [
           {
             "name": "岩手",
@@ -1182,13 +1184,14 @@
             "name": "盛岡",
             "slug": "morioka",
             "url": "https://haji-s.com/hokkaidotohoku/area_iwate/morioka",
-            "count": 10
+            "count": 5
           },
           {
             "name": "北上",
-            "slug": "kitagami",
-            "url": "https://haji-s.com/hokkaidotohoku/area_iwate/kitagami",
-            "count": 2
+            "slug": null,
+            "url": null,
+            "count": 0,
+            "disabled": true
           },
           {
             "name": "一ノ関",
@@ -1210,13 +1213,13 @@
         "name": "宮城県",
         "slug": "area_miyagi",
         "url": "https://haji-s.com/hokkaidotohoku/area_miyagi",
-        "count": 123,
+        "count": 78,
         "cities": [
           {
             "name": "仙台",
             "slug": "sendai",
             "url": "https://haji-s.com/hokkaidotohoku/area_miyagi/sendai",
-            "count": 120
+            "count": 74
           },
           {
             "name": "古川・名取・岩沼",
@@ -1265,10 +1268,9 @@
           },
           {
             "name": "その他",
-            "slug": null,
-            "url": null,
-            "count": 0,
-            "disabled": true
+            "slug": "sonota",
+            "url": "https://haji-s.com/hokkaidotohoku/area_miyagi/sonota",
+            "count": 1
           }
         ]
       },
@@ -1276,13 +1278,13 @@
         "name": "秋田県",
         "slug": "area_akita",
         "url": "https://haji-s.com/hokkaidotohoku/area_akita",
-        "count": 4,
+        "count": 2,
         "cities": [
           {
             "name": "秋田",
             "slug": "akita",
             "url": "https://haji-s.com/hokkaidotohoku/area_akita/akita",
-            "count": 4
+            "count": 2
           },
           {
             "name": "その他",
@@ -1297,13 +1299,13 @@
         "name": "山形県",
         "slug": "area_yamagata",
         "url": "https://haji-s.com/hokkaidotohoku/area_yamagata",
-        "count": 29,
+        "count": 11,
         "cities": [
           {
             "name": "山形",
             "slug": "yamagata",
             "url": "https://haji-s.com/hokkaidotohoku/area_yamagata/yamagata",
-            "count": 29
+            "count": 11
           },
           {
             "name": "高擶",
@@ -1325,19 +1327,19 @@
         "name": "福島県",
         "slug": "area_fukushima",
         "url": "https://haji-s.com/hokkaidotohoku/area_fukushima",
-        "count": 42,
+        "count": 14,
         "cities": [
           {
             "name": "福島",
             "slug": "fukushima",
             "url": "https://haji-s.com/hokkaidotohoku/area_fukushima/fukushima",
-            "count": 20
+            "count": 7
           },
           {
             "name": "郡山",
             "slug": "kooriyama",
             "url": "https://haji-s.com/hokkaidotohoku/area_fukushima/kooriyama",
-            "count": 17
+            "count": 7
           },
           {
             "name": "新白河",
@@ -1349,13 +1351,13 @@
             "name": "いわき",
             "slug": "iwaki",
             "url": "https://haji-s.com/hokkaidotohoku/area_fukushima/iwaki",
-            "count": 6
+            "count": 2
           },
           {
             "name": "その他",
             "slug": "sonota",
             "url": "https://haji-s.com/hokkaidotohoku/area_fukushima/sonota",
-            "count": 2
+            "count": 1
           }
         ]
       }
@@ -1368,13 +1370,13 @@
         "name": "長野県",
         "slug": "area_nagano",
         "url": "https://haji-s.com/koshinetuhokuriku/area_nagano",
-        "count": 21,
+        "count": 20,
         "cities": [
           {
             "name": "長野・松本",
             "slug": "nagano",
             "url": "https://haji-s.com/koshinetuhokuriku/area_nagano/nagano",
-            "count": 18
+            "count": 17
           },
           {
             "name": "その他",
@@ -1388,13 +1390,13 @@
         "name": "新潟県",
         "slug": "area_niigata",
         "url": "https://haji-s.com/koshinetuhokuriku/area_niigata",
-        "count": 36,
+        "count": 33,
         "cities": [
           {
             "name": "新潟・長岡",
             "slug": "niigata",
             "url": "https://haji-s.com/koshinetuhokuriku/area_niigata/niigata",
-            "count": 32
+            "count": 30
           },
           {
             "name": "東新潟",
@@ -1414,7 +1416,7 @@
             "name": "その他",
             "slug": "sonota",
             "url": "https://haji-s.com/koshinetuhokuriku/area_niigata/sonota",
-            "count": 4
+            "count": 3
           }
         ]
       },
@@ -1422,19 +1424,19 @@
         "name": "富山県",
         "slug": "area_toyama",
         "url": "https://haji-s.com/koshinetuhokuriku/area_toyama",
-        "count": 32,
+        "count": 30,
         "cities": [
           {
             "name": "富山・高岳",
             "slug": "toyama",
             "url": "https://haji-s.com/koshinetuhokuriku/area_toyama/toyama",
-            "count": 26
+            "count": 24
           },
           {
             "name": "高岡・新高岡",
             "slug": "takaoka",
             "url": "https://haji-s.com/koshinetuhokuriku/area_toyama/takaoka",
-            "count": 4
+            "count": 5
           },
           {
             "name": "大泉",
@@ -1452,27 +1454,30 @@
           },
           {
             "name": "小泉町",
-            "slug": "koizumitiyo",
-            "url": "https://haji-s.com/koshinetuhokuriku/area_toyama/koizumitiyo",
-            "count": 1
+            "slug": null,
+            "url": null,
+            "count": 0,
+            "disabled": true
           },
           {
             "name": "上堀",
-            "slug": "uwahori",
-            "url": "https://haji-s.com/koshinetuhokuriku/area_toyama/uwahori",
-            "count": 1
+            "slug": null,
+            "url": null,
+            "count": 0,
+            "disabled": true
           },
           {
             "name": "栄町",
-            "slug": "sakaityo",
-            "url": "https://haji-s.com/koshinetuhokuriku/area_toyama/sakaityo",
-            "count": 1
+            "slug": null,
+            "url": null,
+            "count": 0,
+            "disabled": true
           },
           {
             "name": "その他",
             "slug": "sonota",
             "url": "https://haji-s.com/koshinetuhokuriku/area_toyama/sonota",
-            "count": 2
+            "count": 1
           }
         ]
       },
@@ -1480,13 +1485,13 @@
         "name": "石川県",
         "slug": "area_ishikawa",
         "url": "https://haji-s.com/koshinetuhokuriku/area_ishikawa",
-        "count": 50,
+        "count": 47,
         "cities": [
           {
             "name": "石川・金沢",
             "slug": "ishikawa",
             "url": "https://haji-s.com/koshinetuhokuriku/area_ishikawa/ishikawa",
-            "count": 50
+            "count": 47
           },
           {
             "name": "馬替駅",
@@ -1512,13 +1517,13 @@
         "name": "福井県",
         "slug": "area_fukui",
         "url": "https://haji-s.com/koshinetuhokuriku/area_fukui",
-        "count": 10,
+        "count": 8,
         "cities": [
           {
             "name": "福井・片町",
             "slug": "fukui",
             "url": "https://haji-s.com/koshinetuhokuriku/area_fukui/fukui",
-            "count": 10
+            "count": 8
           },
           {
             "name": "開発",
@@ -1580,31 +1585,31 @@
         "name": "広島県",
         "slug": "area_hiroshima",
         "url": "https://haji-s.com/chugokushikoku/area_hiroshima",
-        "count": 80,
+        "count": 56,
         "cities": [
           {
             "name": "広島市",
             "slug": "hiroshima",
             "url": "https://haji-s.com/chugokushikoku/area_hiroshima/hiroshima",
-            "count": 68
+            "count": 49
           },
           {
             "name": "東広島市",
             "slug": "hogashihiroshima",
             "url": "https://haji-s.com/chugokushikoku/area_hiroshima/hogashihiroshima",
-            "count": 5
+            "count": 3
           },
           {
             "name": "呉市",
             "slug": "kure",
             "url": "https://haji-s.com/chugokushikoku/area_hiroshima/kure",
-            "count": 2
+            "count": 1
           },
           {
             "name": "福山市",
             "slug": "fukuyama",
             "url": "https://haji-s.com/chugokushikoku/area_hiroshima/fukuyama",
-            "count": 10
+            "count": 6
           },
           {
             "name": "広島県その他",
@@ -1616,7 +1621,7 @@
             "name": "その他",
             "slug": "sonota",
             "url": "https://haji-s.com/chugokushikoku/area_hiroshima/sonota",
-            "count": 2
+            "count": 1
           }
         ]
       },
@@ -1624,13 +1629,13 @@
         "name": "愛媛県",
         "slug": "area_ehime",
         "url": "https://haji-s.com/chugokushikoku/area_ehime",
-        "count": 18,
+        "count": 12,
         "cities": [
           {
             "name": "松山市",
             "slug": "matsuyama",
             "url": "https://haji-s.com/chugokushikoku/area_ehime/matsuyama",
-            "count": 15
+            "count": 9
           },
           {
             "name": "伊予三島",
@@ -1788,13 +1793,13 @@
         "name": "香川県",
         "slug": "area_kagawa",
         "url": "https://haji-s.com/chugokushikoku/area_kagawa",
-        "count": 22,
+        "count": 14,
         "cities": [
           {
             "name": "高松市",
             "slug": "takamatsu",
             "url": "https://haji-s.com/chugokushikoku/area_kagawa/takamatsu",
-            "count": 22
+            "count": 14
           },
           {
             "name": "瓦町",
@@ -1907,56 +1912,35 @@
         ]
       },
       {
-        "name": "鳥取県",
-        "slug": "area_tottori",
-        "url": "https://haji-s.com/chugokushikoku/area_tottori",
-        "count": 1,
-        "cities": [
-          {
-            "name": "鳥取",
-            "slug": null,
-            "url": null,
-            "count": 0,
-            "disabled": true
-          },
-          {
-            "name": "その他",
-            "slug": "sonota",
-            "url": "https://haji-s.com/chugokushikoku/area_tottori/sonota",
-            "count": 1
-          }
-        ]
-      },
-      {
         "name": "山口県",
         "slug": "area_yamaguchi",
         "url": "https://haji-s.com/chugokushikoku/area_yamaguchi",
-        "count": 14,
+        "count": 11,
         "cities": [
           {
             "name": "周南市",
             "slug": "shunan",
             "url": "https://haji-s.com/chugokushikoku/area_yamaguchi/shunan",
-            "count": 6
+            "count": 5
           },
           {
             "name": "山口市",
             "slug": "yamaguchi",
             "url": "https://haji-s.com/chugokushikoku/area_yamaguchi/yamaguchi",
-            "count": 7
+            "count": 5
           },
           {
             "name": "宇部市",
+            "slug": "ube",
+            "url": "https://haji-s.com/chugokushikoku/area_yamaguchi/ube",
+            "count": 1
+          },
+          {
+            "name": "下関市",
             "slug": null,
             "url": null,
             "count": 0,
             "disabled": true
-          },
-          {
-            "name": "下関市",
-            "slug": "shimonoseki",
-            "url": "https://haji-s.com/chugokushikoku/area_yamaguchi/shimonoseki",
-            "count": 1
           },
           {
             "name": "山口県その他",
@@ -1977,25 +1961,25 @@
         "name": "岡山県",
         "slug": "area_okayama",
         "url": "https://haji-s.com/chugokushikoku/area_okayama",
-        "count": 39,
+        "count": 22,
         "cities": [
           {
             "name": "岡山市",
             "slug": "okayama",
             "url": "https://haji-s.com/chugokushikoku/area_okayama/okayama",
-            "count": 32
+            "count": 18
           },
           {
             "name": "倉敷市",
             "slug": "kurashiki",
             "url": "https://haji-s.com/chugokushikoku/area_okayama/kurashiki",
-            "count": 9
+            "count": 6
           },
           {
             "name": "備前西市・西市",
             "slug": "bizennnisisi",
             "url": "https://haji-s.com/chugokushikoku/area_okayama/bizennnisisi",
-            "count": 2
+            "count": 1
           },
           {
             "name": "津山市",
@@ -2013,9 +1997,10 @@
           },
           {
             "name": "柳川",
-            "slug": "yanagawa",
-            "url": "https://haji-s.com/chugokushikoku/area_okayama/yanagawa",
-            "count": 1
+            "slug": null,
+            "url": null,
+            "count": 0,
+            "disabled": true
           },
           {
             "name": "神田町",
@@ -2026,15 +2011,17 @@
           },
           {
             "name": "大雲寺前",
-            "slug": "daiunnzimae",
-            "url": "https://haji-s.com/chugokushikoku/area_okayama/daiunnzimae",
-            "count": 1
+            "slug": null,
+            "url": null,
+            "count": 0,
+            "disabled": true
           },
           {
             "name": "清輝橋",
-            "slug": "seikibasi",
-            "url": "https://haji-s.com/chugokushikoku/area_okayama/seikibasi",
-            "count": 2
+            "slug": null,
+            "url": null,
+            "count": 0,
+            "disabled": true
           },
           {
             "name": "大元",
@@ -2059,9 +2046,10 @@
           },
           {
             "name": "岡山県その他",
-            "slug": "okayamaetc",
-            "url": "https://haji-s.com/chugokushikoku/area_okayama/okayamaetc",
-            "count": 1
+            "slug": null,
+            "url": null,
+            "count": 0,
+            "disabled": true
           }
         ]
       }
@@ -2074,25 +2062,25 @@
         "name": "福岡県",
         "slug": "area_fukuoka",
         "url": "https://haji-s.com/kyusyuokinawa/area_fukuoka",
-        "count": 216,
+        "count": 96,
         "cities": [
           {
             "name": "博多駅周辺",
             "slug": "hakata",
             "url": "https://haji-s.com/kyusyuokinawa/area_fukuoka/hakata",
-            "count": 162
+            "count": 75
           },
           {
             "name": "中洲川端・春吉・住吉",
             "slug": "nakasu",
             "url": "https://haji-s.com/kyusyuokinawa/area_fukuoka/nakasu",
-            "count": 12
+            "count": 11
           },
           {
             "name": "天神・大宮",
             "slug": "tenjin",
             "url": "https://haji-s.com/kyusyuokinawa/area_fukuoka/tenjin",
-            "count": 13
+            "count": 12
           },
           {
             "name": "平尾・高宮・大橋",
@@ -2131,19 +2119,19 @@
             "name": "小倉・黒崎・八幡",
             "slug": "kokura",
             "url": "https://haji-s.com/kyusyuokinawa/area_fukuoka/kokura",
-            "count": 31
+            "count": 13
           },
           {
             "name": "久留米・八女",
             "slug": "kurume",
             "url": "https://haji-s.com/kyusyuokinawa/area_fukuoka/kurume",
-            "count": 15
+            "count": 5
           },
           {
             "name": "その他",
             "slug": "sonota",
             "url": "https://haji-s.com/kyusyuokinawa/area_fukuoka/sonota",
-            "count": 7
+            "count": 1
           }
         ]
       },
@@ -2151,13 +2139,13 @@
         "name": "佐賀県",
         "slug": "area_saga",
         "url": "https://haji-s.com/kyusyuokinawa/area_saga",
-        "count": 10,
+        "count": 8,
         "cities": [
           {
             "name": "佐賀市内",
             "slug": "saga",
             "url": "https://haji-s.com/kyusyuokinawa/area_saga/saga",
-            "count": 10
+            "count": 8
           },
           {
             "name": "唐津",
@@ -2186,19 +2174,20 @@
         "name": "長崎県",
         "slug": "area_nagasaki",
         "url": "https://haji-s.com/kyusyuokinawa/area_nagasaki",
-        "count": 7,
+        "count": 1,
         "cities": [
           {
             "name": "長崎市内",
-            "slug": "nagasaki",
-            "url": "https://haji-s.com/kyusyuokinawa/area_nagasaki/nagasaki",
-            "count": 5
+            "slug": null,
+            "url": null,
+            "count": 0,
+            "disabled": true
           },
           {
             "name": "佐世保",
             "slug": "sasebo",
             "url": "https://haji-s.com/kyusyuokinawa/area_nagasaki/sasebo",
-            "count": 2
+            "count": 1
           },
           {
             "name": "観光通り",
@@ -2234,13 +2223,13 @@
         "name": "熊本県",
         "slug": "area_kumamoto",
         "url": "https://haji-s.com/kyusyuokinawa/area_kumamoto",
-        "count": 80,
+        "count": 37,
         "cities": [
           {
             "name": "熊本市内",
             "slug": "komamoto",
             "url": "https://haji-s.com/kyusyuokinawa/area_kumamoto/komamoto",
-            "count": 68
+            "count": 30
           },
           {
             "name": "美里木",
@@ -2287,7 +2276,7 @@
             "name": "水前寺",
             "slug": "suizenzi",
             "url": "https://haji-s.com/kyusyuokinawa/area_kumamoto/suizenzi",
-            "count": 7
+            "count": 5
           },
           {
             "name": "慶徳校前",
@@ -2305,15 +2294,17 @@
           },
           {
             "name": "南熊本",
-            "slug": "minamikumamoto",
-            "url": "https://haji-s.com/kyusyuokinawa/area_kumamoto/minamikumamoto",
-            "count": 1
+            "slug": null,
+            "url": null,
+            "count": 0,
+            "disabled": true
           },
           {
             "name": "河原町",
-            "slug": "kawaramati",
-            "url": "https://haji-s.com/kyusyuokinawa/area_kumamoto/kawaramati",
-            "count": 2
+            "slug": null,
+            "url": null,
+            "count": 0,
+            "disabled": true
           },
           {
             "name": "その他",
@@ -2341,13 +2332,13 @@
         "name": "大分県",
         "slug": "area_oita",
         "url": "https://haji-s.com/kyusyuokinawa/area_oita",
-        "count": 31,
+        "count": 10,
         "cities": [
           {
             "name": "大分市内",
             "slug": "ooita",
             "url": "https://haji-s.com/kyusyuokinawa/area_oita/ooita",
-            "count": 31
+            "count": 10
           },
           {
             "name": "別府",
@@ -2376,13 +2367,13 @@
         "name": "宮崎県",
         "slug": "area_miyazaki",
         "url": "https://haji-s.com/kyusyuokinawa/area_miyazaki",
-        "count": 42,
+        "count": 12,
         "cities": [
           {
             "name": "宮崎市内",
             "slug": "miyazaki",
             "url": "https://haji-s.com/kyusyuokinawa/area_miyazaki/miyazaki",
-            "count": 33
+            "count": 11
           },
           {
             "name": "延岡",
@@ -2395,7 +2386,7 @@
             "name": "都城",
             "slug": "miyakonojo",
             "url": "https://haji-s.com/kyusyuokinawa/area_miyazaki/miyakonojo",
-            "count": 9
+            "count": 1
           },
           {
             "name": "その他",
@@ -2410,19 +2401,19 @@
         "name": "鹿児島県",
         "slug": "area_kagoshima",
         "url": "https://haji-s.com/kyusyuokinawa/area_kagoshima",
-        "count": 81,
+        "count": 28,
         "cities": [
           {
             "name": "鹿児島市",
             "slug": "kagoshima",
             "url": "https://haji-s.com/kyusyuokinawa/area_kagoshima/kagoshima",
-            "count": 72
+            "count": 27
           },
           {
             "name": "国分・霧島",
             "slug": "kokubu",
             "url": "https://haji-s.com/kyusyuokinawa/area_kagoshima/kokubu",
-            "count": 9
+            "count": 2
           },
           {
             "name": "川内",
@@ -2477,7 +2468,7 @@
             "name": "天文館",
             "slug": "tenmonkan",
             "url": "https://haji-s.com/kyusyuokinawa/area_kagoshima/tenmonkan",
-            "count": 3
+            "count": 2
           },
           {
             "name": "その他",
@@ -2491,19 +2482,19 @@
         "name": "沖縄県",
         "slug": "area_okinawa",
         "url": "https://haji-s.com/kyusyuokinawa/area_okinawa",
-        "count": 46,
+        "count": 12,
         "cities": [
           {
             "name": "沖縄",
             "slug": "okinawa",
             "url": "https://haji-s.com/kyusyuokinawa/area_okinawa/okinawa",
-            "count": 3
+            "count": 1
           },
           {
             "name": "那覇",
             "slug": "naha",
             "url": "https://haji-s.com/kyusyuokinawa/area_okinawa/naha",
-            "count": 43
+            "count": 11
           },
           {
             "name": "呉屋",

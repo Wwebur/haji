@@ -1,4 +1,29 @@
-import { Shop, Region } from "@/types";
+import { Shop, Region, IndustryType } from "@/types";
+
+/**
+ * Calculate shop counts for each industry type in a region
+ * @param shops - All shops data
+ * @param regionSlug - The region slug
+ * @param industryTypes - Industry types to count
+ * @returns Map of industry type name to shop count
+ */
+export function calculateIndustryCounts(
+  shops: Shop[],
+  regionSlug: string,
+  industryTypes: IndustryType[]
+): Map<string, number> {
+  const regionShops = shops.filter((shop) => shop.sourceArea === regionSlug);
+  const countMap = new Map<string, number>();
+
+  industryTypes.forEach((type) => {
+    const count = regionShops.filter((shop) =>
+      Array.isArray(shop.genres) && shop.genres.includes(type.name)
+    ).length;
+    countMap.set(type.name, count);
+  });
+
+  return countMap;
+}
 
 /**
  * Calculate shop counts for each city in a region
