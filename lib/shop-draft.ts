@@ -1,10 +1,17 @@
 import type { ShopWithDetail } from "@/types/shop";
 
+function newDraftShopId(): string {
+  if (typeof crypto !== "undefined" && typeof crypto.randomUUID === "function") {
+    return crypto.randomUUID();
+  }
+  return `shop-${Date.now()}-${Math.random().toString(36).slice(2, 11)}`;
+}
+
 /** Empty shop row for the admin “new shop” dialog (not persisted until save). */
 export function createDraftShopWithDetail(): ShopWithDetail {
   const now = new Date().toISOString();
   return {
-    id: "",
+    id: newDraftShopId(),
     name: "",
     alias: "",
     genres: "",

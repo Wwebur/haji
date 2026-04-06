@@ -176,7 +176,7 @@ const DEFAULT_DETAIL: ShopDetailData = {
 
 interface ShopEditDialogProps {
   shop: ShopWithDetail;
-  /** When true, `id` is editable and save creates a new row (parent must call `createShop`). */
+  /** When true, save creates a new row (parent must call `createShop`). New drafts get an auto-generated `id`. */
   isNewShop?: boolean;
   regions: Region[];
   industryTypes: IndustryType[];
@@ -275,7 +275,6 @@ export function ShopEditDialog({
         area: shop.area || "",
         catch_copy: shop.catch_copy || "",
         image_url: shop.image_url || "",
-        detail_url: shop.detail_url || "",
         source_area: shop.source_area || "",
         data: shop.data || {
           給与: null,
@@ -409,10 +408,14 @@ export function ShopEditDialog({
   };
 
   const handleSubmit = async () => {
-    const merged = { ...shop, ...formData } as Shop;
+    const merged = {
+      ...shop,
+      ...formData,
+      detail_url: shop.detail_url ?? "",
+    } as Shop;
     const id = merged.id?.trim() ?? "";
     if (!id) {
-      toast.error("店舗IDを入力してください");
+      toast.error("店舗IDを取得できませんでした");
       return;
     }
     if (!merged.name?.trim()) {
@@ -441,42 +444,57 @@ export function ShopEditDialog({
 
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
-      <DialogContent className="max-w-3xl max-h-[90vh]">
-        <DialogHeader>
-          <DialogTitle>
+      <DialogContent className="max-w-3xl max-h-[92vh] gap-0 border-border/80 bg-background/95 p-0 shadow-lg backdrop-blur-sm sm:max-w-3xl flex flex-col overflow-hidden">
+        <DialogHeader className="shrink-0 space-y-1 border-b border-border/60 bg-muted/20 px-5 py-4 text-left sm:px-6">
+          <DialogTitle className="text-lg font-semibold tracking-tight">
             {isNewShop ? "新規店舗の登録" : "店舗情報の編集"}
           </DialogTitle>
-          <DialogDescription>
+          <DialogDescription className="text-sm">
             {isNewShop
-              ? "店舗ID・店舗名は必須です。画像アップロードは店舗ID入力後に利用できます。"
+              ? "店舗名は必須です。店舗IDは自動で発行されます。"
               : `店舗ID: ${shop.id}`}
           </DialogDescription>
         </DialogHeader>
 
-        <Tabs defaultValue="basic" className="w-full">
-          <TabsList className="grid w-full grid-cols-4">
-            <TabsTrigger value="basic">基本情報</TabsTrigger>
-            <TabsTrigger value="data">追加データ</TabsTrigger>
-            <TabsTrigger value="detail">詳細情報</TabsTrigger>
-            <TabsTrigger value="media">画像・メディア</TabsTrigger>
+        <Tabs defaultValue="basic" className="flex min-h-0 flex-1 flex-col px-5 pb-2 pt-3 sm:px-6">
+          <TabsList className="grid h-10 w-full shrink-0 grid-cols-4 gap-1 rounded-lg bg-muted/60 p-1">
+            <TabsTrigger
+              value="basic"
+              className="rounded-md text-xs font-medium data-[state=active]:bg-background data-[state=active]:shadow-sm sm:text-sm"
+            >
+              基本情報
+            </TabsTrigger>
+            <TabsTrigger
+              value="data"
+              className="rounded-md text-xs font-medium data-[state=active]:bg-background data-[state=active]:shadow-sm sm:text-sm"
+            >
+              追加データ
+            </TabsTrigger>
+            <TabsTrigger
+              value="detail"
+              className="rounded-md text-xs font-medium data-[state=active]:bg-background data-[state=active]:shadow-sm sm:text-sm"
+            >
+              詳細情報
+            </TabsTrigger>
+            <TabsTrigger
+              value="media"
+              className="rounded-md text-xs font-medium data-[state=active]:bg-background data-[state=active]:shadow-sm sm:text-sm"
+            >
+              画像・メディア
+            </TabsTrigger>
           </TabsList>
 
-          <ScrollArea className="h-[50vh] mt-4">
-            <TabsContent value="basic" className="pr-4">
-              <FieldGroup>
+          <ScrollArea className="mt-3 min-h-[48vh] flex-1 pr-3">
+            <TabsContent value="basic" className="mr-1 space-y-1 rounded-xl border border-border/50 bg-card/40 p-4 pr-3 shadow-sm outline-none">
+              <FieldGroup className="gap-4">
                 {isNewShop ? (
                   <Field>
-                    <FieldLabel htmlFor="shop_id">店舗ID</FieldLabel>
-                    <Input
-                      id="shop_id"
-                      name="id"
-                      value={formData.id ?? ""}
-                      onChange={handleInputChange}
-                      placeholder="例: my-shop-slug（英数字・ハイフン推奨）"
-                      autoComplete="off"
-                    />
+                    <FieldLabel>店舗ID（自動発行）</FieldLabel>
+                    <div className="rounded-md border border-border/60 bg-muted/40 px-3 py-2 font-mono text-sm text-foreground">
+                      {formData.id ?? shop.id ?? "—"}
+                    </div>
                     <p className="text-muted-foreground text-xs">
-                      データベースの主キーです。既存と重複できません。
+                      画像アップロードや保存に使用します。手入力は不要です。
                     </p>
                   </Field>
                 ) : null}
@@ -573,17 +591,6 @@ export function ShopEditDialog({
                     rows={3}
                   />
                 </Field>
-                <Field>
-                  <FieldLabel htmlFor="detail_url">詳細ページURL (detail_url)</FieldLabel>
-                  <Input
-                    id="detail_url"
-                    name="detail_url"
-                    type="url"
-                    value={formData.detail_url ?? ""}
-                    onChange={handleInputChange}
-                    placeholder="https://..."
-                  />
-                </Field>
                 <ShopCoverImageField
                   shopId={resolvedShopId || shop.id || "_"}
                   imageUrl={formData.image_url || ""}
@@ -592,16 +599,11 @@ export function ShopEditDialog({
                   }
                   disabled={storageDisabled}
                 />
-                {isNewShop && !resolvedShopId ? (
-                  <p className="text-amber-600 text-xs dark:text-amber-500">
-                    店舗IDを入力すると画像をアップロードできます。
-                  </p>
-                ) : null}
               </FieldGroup>
             </TabsContent>
 
-            <TabsContent value="data" className="pr-4">
-              <FieldGroup>
+            <TabsContent value="data" className="mr-1 space-y-1 rounded-xl border border-border/50 bg-card/40 p-4 pr-3 shadow-sm outline-none">
+              <FieldGroup className="gap-4">
                 <Field>
                   <FieldLabel htmlFor="data_salary">給与</FieldLabel>
                   <Textarea
@@ -641,10 +643,12 @@ export function ShopEditDialog({
               </FieldGroup>
             </TabsContent>
 
-            <TabsContent value="detail" className="pr-4">
-              <FieldGroup>
+            <TabsContent value="detail" className="mr-1 space-y-1 rounded-xl border border-border/50 bg-card/40 p-4 pr-3 shadow-sm outline-none">
+              {/* catchCopy, descriptionHtml, shopInfo, recruitDetailsHtml, benefits, applicationFlowHtml, applicationFlowNoteHtml, ouboFormUrl, mapUrl, mapCaption */}
+              <FieldGroup className="gap-5">
                 <Field>
-                  <FieldLabel>キャッチコピー (detail)</FieldLabel>
+                  {/* catchCopy */}
+                  <FieldLabel>詳細ページのキャッチコピー</FieldLabel>
                   <Textarea
                     value={detailData.catchCopy || ""}
                     onChange={(e) =>
@@ -654,7 +658,8 @@ export function ShopEditDialog({
                   />
                 </Field>
                 <Field>
-                  <FieldLabel>説明 (descriptionHtml)</FieldLabel>
+                  {/* descriptionHtml */}
+                  <FieldLabel>説明（リッチテキスト）</FieldLabel>
                   <HtmlEditor
                     key={open ? "desc-open" : "desc-closed"}
                     value={detailData.descriptionHtml || ""}
@@ -664,8 +669,9 @@ export function ShopEditDialog({
                   />
                 </Field>
 
-                <div className="space-y-2">
-                  <FieldLabel>店舗情報 (shopInfo)</FieldLabel>
+                <div className="space-y-3 rounded-lg border border-border/40 bg-background/50 p-3">
+                  {/* shopInfo */}
+                  <FieldLabel className="text-sm font-medium">店舗情報</FieldLabel>
                   {(
                     ["店名", "住所", "電話番号", "営業時間", "アクセス"] as const
                   ).map((key) => (
@@ -684,11 +690,11 @@ export function ShopEditDialog({
                   ))}
                 </div>
 
-                <div className="space-y-2">
-                  <FieldLabel>募集詳細HTML (recruitDetailsHtml)</FieldLabel>
-                  {/* <p className="text-muted-foreground text-xs">
-                    次の8項目を個別に編集します。保存時は固定キー順の JSON オブジェクトとして書き込みます。
-                  </p> */}
+                <div className="space-y-3 rounded-lg border border-border/40 bg-background/50 p-3">
+                  {/* recruitDetailsHtml */}
+                  <FieldLabel className="text-sm font-medium">
+                    募集詳細（リッチテキスト）
+                  </FieldLabel>
                   {RECRUIT_DETAILS_HTML_KEYS.map((key) => (
                     <Field key={key}>
                       <FieldLabel className="text-sm font-medium">{key}</FieldLabel>
@@ -704,18 +710,17 @@ export function ShopEditDialog({
                     </Field>
                   ))}
                 </div>
-                <div className="space-y-2">
-                  <FieldLabel>特典 (benefits)</FieldLabel>
+                <div className="space-y-3 rounded-lg border border-border/40 bg-background/50 p-3">
+                  {/* benefits */}
+                  <FieldLabel className="text-sm font-medium">特典</FieldLabel>
                   <p className="text-muted-foreground text-xs">
-                    固定30項目をこの順序で保存します（各項目に{" "}
-                    <code className="text-xs">label</code> と{" "}
-                    <code className="text-xs">active</code>）。
+                    表示する特典をオンにしてください（項目と順序は固定です）。
                   </p>
                   <div className="grid gap-2 sm:grid-cols-2">
                     {detailData.benefits.map((b) => (
                       <div
                         key={b.label}
-                        className="flex items-center justify-between gap-3 rounded-md border px-3 py-2"
+                        className="flex items-center justify-between gap-3 rounded-md border border-border/50 bg-background/60 px-3 py-2"
                       >
                         <span className="text-sm">{b.label}</span>
                         <Switch
@@ -729,10 +734,11 @@ export function ShopEditDialog({
                     ))}
                   </div>
                 </div>
-                <div className="space-y-3">
+                <div className="space-y-3 rounded-lg border border-border/40 bg-background/50 p-3">
+                  {/* applicationFlowHtml */}
                   <div className="flex flex-wrap items-center justify-between gap-2">
-                    <FieldLabel className="text-base">
-                      申込フローHTML (applicationFlowHtml)
+                    <FieldLabel className="text-base font-medium">
+                      申込フロー（各ステップ）
                     </FieldLabel>
                     <Button
                       type="button"
@@ -747,8 +753,7 @@ export function ShopEditDialog({
                     </Button>
                   </div>
                   <p className="text-muted-foreground text-xs">
-                    各ステップは文字列の配列として保存されます（順序どおり JSON
-                    配列になります）。手編集の JSON は不要です。
+                    ステップの並び順がそのまま保存されます。
                   </p>
                   {(detailData.applicationFlowHtml ?? []).length === 0 ? (
                     <p className="text-muted-foreground text-sm">
@@ -760,7 +765,7 @@ export function ShopEditDialog({
                         (stepHtml, index) => (
                         <div
                           key={`application-flow-${shop.id}-${index}`}
-                          className="space-y-2 rounded-md border p-3"
+                          className="space-y-2 rounded-md border border-border/50 bg-background/40 p-3"
                         >
                           <div className="flex flex-wrap items-center justify-between gap-2">
                             <span className="text-sm font-medium">
@@ -799,7 +804,8 @@ export function ShopEditDialog({
                   )}
                 </div>
                 <Field>
-                  <FieldLabel>申込フロー注意 (applicationFlowNoteHtml)</FieldLabel>
+                  {/* applicationFlowNoteHtml */}
+                  <FieldLabel>申込フロー注意書き</FieldLabel>
                   <HtmlEditor
                     key={open ? "flow-note-open" : "flow-note-closed"}
                     value={detailData.applicationFlowNoteHtml || ""}
@@ -810,7 +816,8 @@ export function ShopEditDialog({
                   />
                 </Field>
                 <Field>
-                  <FieldLabel htmlFor="ouboFormUrl">応募フォームURL (ouboFormUrl)</FieldLabel>
+                  {/* ouboFormUrl */}
+                  <FieldLabel htmlFor="ouboFormUrl">応募フォームURL</FieldLabel>
                   <Input
                     id="ouboFormUrl"
                     value={detailData.ouboFormUrl || ""}
@@ -820,7 +827,8 @@ export function ShopEditDialog({
                   />
                 </Field>
                 <Field>
-                  <FieldLabel htmlFor="mapUrl">地図URL (mapUrl)</FieldLabel>
+                  {/* mapUrl */}
+                  <FieldLabel htmlFor="mapUrl">地図URL</FieldLabel>
                   <Input
                     id="mapUrl"
                     value={detailData.mapUrl || ""}
@@ -830,7 +838,8 @@ export function ShopEditDialog({
                   />
                 </Field>
                 <Field>
-                  <FieldLabel htmlFor="mapCaption">地図キャプション (mapCaption)</FieldLabel>
+                  {/* mapCaption */}
+                  <FieldLabel htmlFor="mapCaption">地図の説明</FieldLabel>
                   <Input
                     id="mapCaption"
                     value={detailData.mapCaption || ""}
@@ -842,15 +851,14 @@ export function ShopEditDialog({
               </FieldGroup>
             </TabsContent>
 
-            <TabsContent value="media" className="pr-4">
-              <FieldGroup>
-                {isNewShop && !resolvedShopId ? (
-                  <p className="text-amber-600 text-sm dark:text-amber-500">
-                    店舗IDを基本情報で入力すると、ここで画像をアップロードできます。
-                  </p>
-                ) : null}
+            <TabsContent value="media" className="mr-1 space-y-1 rounded-xl border border-border/50 bg-card/40 p-4 pr-3 shadow-sm outline-none">
+              {/* mainImages, images, prImage, gallery, prePlan, sidebarPresentImage, kyubo */}
+              <FieldGroup className="gap-5">
                 <div className="space-y-2">
-                  <FieldLabel>メイン画像 (mainImages) — 最大3枚</FieldLabel>
+                  {/* mainImages */}
+                  <FieldLabel className="text-sm font-medium">
+                    メイン画像（最大3枚）
+                  </FieldLabel>
                   <div className="grid gap-4 sm:grid-cols-3">
                     {DETAIL_MEDIA_SLOT_INDEXES.map((i) => (
                       <ShopStorageImageSlot
@@ -866,7 +874,10 @@ export function ShopEditDialog({
                   </div>
                 </div>
                 <div className="space-y-2">
-                  <FieldLabel>画像一覧 (images) — 最大3枚（URL＋キャプション）</FieldLabel>
+                  {/* images */}
+                  <FieldLabel className="text-sm font-medium">
+                    画像一覧（URL・キャプション、最大3枚）
+                  </FieldLabel>
                   <div className="grid gap-4 sm:grid-cols-3">
                     {DETAIL_MEDIA_SLOT_INDEXES.map((i) => (
                       <ShopStorageImageSlot
@@ -889,7 +900,7 @@ export function ShopEditDialog({
                 </div>
                 <ShopStorageImageSlot
                   shopId={resolvedShopId || shop.id || "_"}
-                  label="PR画像 (prImage)"
+                  label="PR画像"
                   compact
                   imageUrl={detailData.prImage || ""}
                   onImageUrlChange={(url) =>
@@ -898,7 +909,10 @@ export function ShopEditDialog({
                   disabled={storageDisabled}
                 />
                 <div className="space-y-2">
-                  <FieldLabel>ギャラリー (gallery) — 最大3枚</FieldLabel>
+                  {/* gallery */}
+                  <FieldLabel className="text-sm font-medium">
+                    ギャラリー（最大3枚）
+                  </FieldLabel>
                   <div className="grid gap-4 sm:grid-cols-3">
                     {DETAIL_MEDIA_SLOT_INDEXES.map((i) => (
                       <ShopStorageImageSlot
@@ -913,11 +927,12 @@ export function ShopEditDialog({
                     ))}
                   </div>
                 </div>
-                <div className="space-y-2">
-                  <FieldLabel>プレプラン (prePlan)</FieldLabel>
+                <div className="space-y-3 rounded-lg border border-border/40 bg-background/50 p-3">
+                  {/* prePlan */}
+                  <FieldLabel className="text-sm font-medium">プレプラン</FieldLabel>
                   <ShopStorageImageSlot
                     shopId={resolvedShopId || shop.id || "_"}
-                    label="プレプラン画像 (imageUrl)"
+                    label="プレプラン画像"
                     compact
                     imageUrl={detailData.prePlan?.imageUrl || ""}
                     onImageUrlChange={(url) =>
@@ -929,8 +944,9 @@ export function ShopEditDialog({
                     disabled={storageDisabled}
                   />
                   <Field>
+                    {/* prePlan.linkUrl */}
                     <FieldLabel htmlFor="prePlan_linkUrl" className="text-xs">
-                      linkUrl
+                      リンク先URL
                     </FieldLabel>
                     <Input
                       id="prePlan_linkUrl"
@@ -944,11 +960,14 @@ export function ShopEditDialog({
                     />
                   </Field>
                 </div>
-                <div className="space-y-2">
-                  <FieldLabel>サイドバーPR画像 (sidebarPresentImage)</FieldLabel>
+                <div className="space-y-3 rounded-lg border border-border/40 bg-background/50 p-3">
+                  {/* sidebarPresentImage */}
+                  <FieldLabel className="text-sm font-medium">
+                    サイドバーPR画像
+                  </FieldLabel>
                   <ShopStorageImageSlot
                     shopId={resolvedShopId || shop.id || "_"}
-                    label="サイドバーPR画像 (imageUrl)"
+                    label="サイドバーPR用画像"
                     compact
                     imageUrl={detailData.sidebarPresentImage?.imageUrl || ""}
                     onImageUrlChange={(url) =>
@@ -961,11 +980,12 @@ export function ShopEditDialog({
                     disabled={storageDisabled}
                   />
                   <Field>
+                    {/* sidebarPresentImage.linkUrl */}
                     <FieldLabel
                       htmlFor="sidebarPresent_linkUrl"
                       className="text-xs"
                     >
-                      linkUrl
+                      リンク先URL
                     </FieldLabel>
                     <Input
                       id="sidebarPresent_linkUrl"
@@ -980,11 +1000,13 @@ export function ShopEditDialog({
                     />
                   </Field>
                 </div>
-                <div className="space-y-2">
-                  <FieldLabel>求人情報 (kyubo)</FieldLabel>
+                <div className="space-y-3 rounded-lg border border-border/40 bg-background/50 p-3">
+                  {/* kyubo */}
+                  <FieldLabel className="text-sm font-medium">求人情報</FieldLabel>
                   <Field>
+                    {/* kyubo.date */}
                     <FieldLabel htmlFor="kyubo_date" className="text-xs">
-                      date
+                      日付
                     </FieldLabel>
                     <Input
                       id="kyubo_date"
@@ -1000,8 +1022,9 @@ export function ShopEditDialog({
                     />
                   </Field>
                   <Field>
+                    {/* kyubo.title */}
                     <FieldLabel htmlFor="kyubo_title" className="text-xs">
-                      title
+                      タイトル
                     </FieldLabel>
                     <Input
                       id="kyubo_title"
@@ -1017,8 +1040,9 @@ export function ShopEditDialog({
                     />
                   </Field>
                   <Field>
+                    {/* kyubo.content */}
                     <FieldLabel htmlFor="kyubo_content" className="text-xs">
-                      content
+                      本文（テキスト）
                     </FieldLabel>
                     <Textarea
                       id="kyubo_content"
@@ -1035,8 +1059,9 @@ export function ShopEditDialog({
                     />
                   </Field>
                   <Field>
+                    {/* kyubo.contentHtml */}
                     <FieldLabel htmlFor="kyubo_contentHtml" className="text-xs">
-                      contentHtml
+                      本文（リッチテキスト）
                     </FieldLabel>
                     <HtmlEditor
                       key={open ? "kyubo-open" : "kyubo-closed"}
@@ -1058,7 +1083,7 @@ export function ShopEditDialog({
           </ScrollArea>
         </Tabs>
 
-        <DialogFooter>
+        <DialogFooter className="shrink-0 gap-2 border-t border-border/60 bg-muted/10 px-5 py-4 sm:px-6">
           <Button variant="outline" onClick={() => onOpenChange(false)}>
             キャンセル
           </Button>
