@@ -231,7 +231,7 @@ export function ShopTable({
 
       {/* Pagination */}
       {totalPages > 1 && (
-        <div className="flex items-center justify-between">
+        <div className="flex items-center justify-between pb-2">
           <span className="text-sm text-muted-foreground">
             {(currentPage - 1) * itemsPerPage + 1} -{" "}
             {Math.min(currentPage * itemsPerPage, shops.length)} /{" "}

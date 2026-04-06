@@ -33,7 +33,6 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { ScrollArea } from "@/components/ui/scroll-area";
 import { Spinner } from "@/components/ui/spinner";
 import { FieldGroup, Field, FieldLabel } from "@/components/ui/field";
 import { Switch } from "@/components/ui/switch";
@@ -444,7 +443,7 @@ export function ShopEditDialog({
 
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
-      <DialogContent className="max-w-3xl max-h-[92vh] gap-0 border-border/80 bg-background/95 p-0 shadow-lg backdrop-blur-sm sm:max-w-3xl flex flex-col overflow-hidden">
+      <DialogContent className="flex max-h-[min(92vh,100dvh-1rem)] w-full max-w-3xl min-h-0 flex-col gap-0 overflow-hidden border-border/80 bg-background/95 p-0 shadow-lg backdrop-blur-sm sm:max-w-3xl">
         <DialogHeader className="shrink-0 space-y-1 border-b border-border/60 bg-muted/20 px-5 py-4 text-left sm:px-6">
           <DialogTitle className="text-lg font-semibold tracking-tight">
             {isNewShop ? "新規店舗の登録" : "店舗情報の編集"}
@@ -456,7 +455,10 @@ export function ShopEditDialog({
           </DialogDescription>
         </DialogHeader>
 
-        <Tabs defaultValue="basic" className="flex min-h-0 flex-1 flex-col px-5 pb-2 pt-3 sm:px-6">
+        <Tabs
+          defaultValue="basic"
+          className="flex min-h-0 flex-1 flex-col overflow-hidden px-5 pb-0 pt-3 sm:px-6"
+        >
           <TabsList className="grid h-10 w-full shrink-0 grid-cols-4 gap-1 rounded-lg bg-muted/60 p-1">
             <TabsTrigger
               value="basic"
@@ -484,7 +486,7 @@ export function ShopEditDialog({
             </TabsTrigger>
           </TabsList>
 
-          <ScrollArea className="mt-3 min-h-[48vh] flex-1 pr-3">
+          <div className="mt-3 min-h-0 flex-1 overflow-y-auto overflow-x-hidden overscroll-y-contain pb-4 pr-2 [-webkit-overflow-scrolling:touch]">
             <TabsContent value="basic" className="mr-1 space-y-1 rounded-xl border border-border/50 bg-card/40 p-4 pr-3 shadow-sm outline-none">
               <FieldGroup className="gap-4">
                 {isNewShop ? (
@@ -1080,7 +1082,7 @@ export function ShopEditDialog({
                 </div>
               </FieldGroup>
             </TabsContent>
-          </ScrollArea>
+          </div>
         </Tabs>
 
         <DialogFooter className="shrink-0 gap-2 border-t border-border/60 bg-muted/10 px-5 py-4 sm:px-6">

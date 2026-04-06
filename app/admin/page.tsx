@@ -53,8 +53,8 @@ export default async function AdminPage() {
   const regions = areasData as Region[];
 
   return (
-    <div className="space-y-6">
-      <div>
+    <div className="space-y-6 pb-6">
+      <div className="pt-6 px-6">
         <h2 className="text-2xl font-bold tracking-tight">店舗一覧</h2>
         <p className="text-muted-foreground">
           登録されている店舗情報を管理します（全{shops.length}件）

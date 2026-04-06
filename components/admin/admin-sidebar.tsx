@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { ScrollArea } from "@/components/ui/scroll-area";
@@ -228,11 +228,14 @@ export function AdminSidebar({
   onFilterChange,
 }: AdminSidebarProps) {
   const [keyword, setKeyword] = useState(filters.keyword);
+  /** Tracks last `filters.keyword` from parent so we can reset the draft input when it changes externally. */
+  const [prevFiltersKeyword, setPrevFiltersKeyword] = useState(filters.keyword);
   const [sheetOpen, setSheetOpen] = useState(false);
 
-  useEffect(() => {
+  if (filters.keyword !== prevFiltersKeyword) {
+    setPrevFiltersKeyword(filters.keyword);
     setKeyword(filters.keyword);
-  }, [filters.keyword]);
+  }
 
   const handleSearch = (e: React.SyntheticEvent) => {
     e.preventDefault();
@@ -281,7 +284,7 @@ export function AdminSidebar({
 
   return (
     <aside className="w-56 shrink-0 border-r bg-muted/30">
-      <div className="sticky top-14 flex h-[calc(100vh-3.5rem)] flex-col">
+      <div className="sticky top-14 flex flex-col">
         <SIDEBAR_CONTENT {...contentProps} />
       </div>
     </aside>
